@@ -2,11 +2,40 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: 
 nav: true
 nav_order: 5
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+this is a summary of my teaching experience during my time as a graduate and undergraduate student.
 
-Organize your courses by years, topics, or universities, however you like!
+---
+
+### at MIT
+
+- **MIT, 18.02B: Calculus**.
+In winter 2022, I was a the course administrator for 18.02B at MIT, which was taught by John Bush.
+
+- **MIT, 18.02A: Calculus**.
+In fall 2021, I was a teaching assistant for 18.02A at MIT, which was taught by David Jerison.
+
+- **MIT, 18.725: Algebraic Geometry I and 18.726: Algebraic Geometry II**.
+In 2020-2021, I was a teaching assistant for 18.725 (Algebraic Geometry I) at MIT, which was taught by Davesh Maulik.
+
+---
+
+### at the University of Toronto
+- **University of Toronto, MAT257: Analysis II**.
+During the 2018-2019 academic year, I was a teaching assistant for MAT257 (Analysis II) at the University of Toronto, which was taught by Edward Bierstone.
+
+- **University of Toronto, MAT137: Calculus**.
+During the 2017-2018 academic year, I was a teaching assistant for MAT137 (Calculus) at the University of Toronto, which was coordinated by Alfonso Gracia-Saz.
+
+- **University of Toronto, MAT135/MAT136: Calculus I/Calculus II**.
+During the 2016-2017 academic year, I was a teaching assistant for MAT135 and MAT136 (Calculus I & II) at the University of Toronto.
+
+---
+
+### at the Boston Pre-Release Center
+- **Boston Pre-Release Center, high-school equivalent math class**.
+As part of my MIT's <a href="https://www.teji.mit.edu/">Educational Justice Institute</a>, I was a TA for a course taught in the Boston Pre-Release Center attended by incarcerated students learning high-school equivalent math topics.

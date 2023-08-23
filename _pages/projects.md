@@ -1,11 +1,11 @@
 ---
 layout: page
-title: projects
+title: notes
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: some notes from previous talks and projects
 nav: true
 nav_order: 2
-display_categories: [work, fun]
+display_categories: [talks & notes]
 horizontal: false
 ---
 
