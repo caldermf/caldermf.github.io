@@ -13,7 +13,7 @@ this is a summary of my teaching experience during my time as a graduate and und
 
 ### at MIT
 
--**MIT, 18.702: Algebra II**.
+- **MIT, 18.702: Algebra II**.
 In spring 2023, I was a teaching assistant for 18.702 at MIT, which was taught by Andrei Negut.
 
 - **MIT, 18.02B: Calculus**.
