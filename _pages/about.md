@@ -17,6 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a fifth-year PhD student at MIT, working under the supervision of Roman Bezrukavnikov. I am interested in the intersection of algebra, geometry, and combinatorics, particularly in the context of geometric representation theory.
-
-In the links above, you can find information about my current and previous research, things I've been learning about lately, my teaching, and mathematical notes I've made available.
+I am a fifth-year PhD student at MIT, working under the supervision of Roman Bezrukavnikov. I am interested in the intersection of algebra, geometry, and combinatorics, particularly in the context of geometric representation theory. Starting in July 2024, I will be a Szeg&#337; assistant professor at Stanford University.
