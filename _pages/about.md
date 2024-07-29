@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a Szeg&#337; Assistant Professor at Stanford University. I am interested in the intersection of algebra, geometry, and combinatorics, particularly in the context of geometric representation theory. From May 2019-2024, I did my PhD at MIT under the supervision of Roman Bezrukavnikov.
+I am a Szeg&#337; Assistant Professor at Stanford University. I am interested in the intersection of algebra, geometry, and combinatorics, particularly in the context of geometric representation theory. From May 2019-2024, I completed my PhD at MIT under the supervision of Roman Bezrukavnikov.
