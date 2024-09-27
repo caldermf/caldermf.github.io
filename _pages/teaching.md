@@ -7,7 +7,17 @@ nav: true
 nav_order: 5
 ---
 
-this is a summary of my teaching experience during my time as a graduate and undergraduate student.
+this is a summary of my teaching experience.
+
+---
+
+### at Stanford
+
+- **Stanford, Math 51: Linear Algebra and Multivariable Calculus**
+In fall 2024, I am teaching two sections of Math 51.
+
+- **Stanford, Math 245C: Topics in Algebraic Geometry**
+In the spring quarter of 2025, I will teach Math 245C.
 
 ---
 
