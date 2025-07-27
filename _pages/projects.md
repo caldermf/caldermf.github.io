@@ -2,10 +2,10 @@
 layout: page
 title: notes
 permalink: /projects/
-description: some notes from previous talks and projects
+description: some notes and other projects
 nav: true
 nav_order: 2
-display_categories: [talks & notes]
+display_categories: [talks & notes, apps]
 horizontal: false
 ---
 
