@@ -6,7 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Calder
 middle_name: 
 last_name: Morton-Ferguson
-email: caldermf@stanford.edu
+email: calder.morton-ferguson@yale.edu
 description: 
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
@@ -75,7 +75,7 @@ twitter_username: # your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: # your LinkedIn user name
 telegram_username: # your Telegram user name
-scholar_userid: # your Google Scholar ID z7yGETJzTboC
+scholar_userid: z7yGETJzTboC # your Google Scholar ID z7yGETJzTboC
 semanticscholar_id: # your Semantic Scholar ID
 whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 orcid_id: 0000-0002-1955-9109 # your ORCID ID
@@ -221,14 +221,11 @@ plugins:
   - jekyll-feed
   - jekyll-get-json
   - jekyll-imagemagick
-  - jekyll-jupyter-notebook
   - jekyll-link-attributes
   - jekyll-minifier
-  - jekyll-paginate-v2
-  - jekyll/scholar
+  - jekyll-scholar
   - jekyll-sitemap
   - jekyll-toc
-  - jekyll-twitter-plugin
   - jemoji
 
 # Sitemap settings
@@ -245,7 +242,7 @@ defaults:
 jekyll-minifier:
   exclude: ['robots.txt']
   uglifier_args:
-    harmony: true
+    # harmony: true
 
 # -----------------------------------------------------------------------------
 # Jekyll Archives
@@ -297,6 +294,7 @@ scholar:
   group_order: descending
 
 badges: # Display different badges for your publications
+enable_publication_badges:
   altmetric_badge: false # Altmetric badge (https://www.altmetric.com/products/altmetric-badges/)
   dimensions_badge: false # Dimensions badge (https://badge.dimensions.ai/)
 
