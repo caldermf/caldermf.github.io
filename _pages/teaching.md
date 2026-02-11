@@ -11,13 +11,23 @@ this is a summary of my teaching experience.
 
 ---
 
+### at Yale
+
+- **Yale, Math 3500: Abstract Algebra**
+Spring 2026.
+
+- **Yale, Math 2250: Linear Algebra with Proofs**
+Fall 2025.
+
+---
+
 ### at Stanford
 
 - **Stanford, Math 51: Linear Algebra and Multivariable Calculus**
-In fall 2024, I am teaching two sections of Math 51.
+Fall 2024 (two sections).
 
 - **Stanford, Math 245C: Topics in Algebraic Geometry**
-In the spring quarter of 2025, I will teach Math 245C.
+Spring 2025.
 
 ---
 
