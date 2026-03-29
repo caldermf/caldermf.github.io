@@ -2,6 +2,8 @@
 
 This is an interactive browser visualizer and verified prime-field implementation of the Burnside sampling process on the symmetric group, which arises from the finite-field flag variety in Type A as explained in the paper [Markov chains on Weyl groups from the geometry of the flag variety](https://arxiv.org/abs/2510.02285).
 
+[It's live on the web here, check it out!](https://caldermf.github.io/burnside-sampler/web/index.html)
+
 The project has two core layers:
 
 - `web/`: a no-backend browser app that runs the sampler locally through Pyodide
