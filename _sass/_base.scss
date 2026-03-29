@@ -514,8 +514,30 @@ footer.sticky-bottom {
   }
 
   .card {
+    position: relative;
+
     img {
       width: 100%;
+    }
+  }
+
+  .project-links {
+    position: relative;
+    z-index: 2;
+    gap: 0.75rem;
+
+    .icon,
+    .stars {
+      position: relative;
+      z-index: 2;
+    }
+
+    a {
+      color: var(--global-text-color);
+
+      &:hover {
+        color: var(--global-theme-color);
+      }
     }
   }
 
