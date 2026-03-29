@@ -5,6 +5,7 @@ const elements = {
   steps: document.querySelector("#step-count"),
   seed: document.querySelector("#seed"),
   start: document.querySelector("#start-state"),
+  randomizeStartButton: document.querySelector("#randomize-start-button"),
   initializeButton: document.querySelector("#initialize-button"),
   runButton: document.querySelector("#run-button"),
   stepButton: document.querySelector("#step-button"),
@@ -18,7 +19,7 @@ const elements = {
 const worker = new Worker(new URL("./worker.mjs", import.meta.url), { type: "module" });
 
 const PRIME_MAX = 7919;
-const DEFAULT_PRIME = 101;
+const DEFAULT_PRIME = 733;
 
 let workerReady = false;
 let busy = false;
@@ -86,15 +87,20 @@ function updatePrimeDisplay() {
 function setBusy(nextBusy) {
   busy = nextBusy;
   const controlsDisabled = nextBusy || !workerReady;
-  for (const button of [
+  for (const control of [
+    elements.n,
+    elements.steps,
+    elements.seed,
+    elements.start,
+    elements.primeSlider,
+    elements.randomizeStartButton,
     elements.initializeButton,
     elements.runButton,
     elements.stepButton,
     elements.resetButton,
   ]) {
-    button.disabled = controlsDisabled;
+    control.disabled = controlsDisabled;
   }
-  elements.primeSlider.disabled = controlsDisabled;
 }
 
 function postWorkerMessage(message, statusText) {
@@ -139,6 +145,27 @@ function getPermutationOrder(n) {
     permutationOrderCache.set(n, createPermutationOrder(n));
   }
   return permutationOrderCache.get(n);
+}
+
+function randomPermutation(n) {
+  const permutation = Array.from({ length: n }, (_, index) => index + 1);
+  for (let index = permutation.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [permutation[index], permutation[swapIndex]] = [permutation[swapIndex], permutation[index]];
+  }
+  return permutation;
+}
+
+function setStartPermutation(permutation) {
+  elements.start.value = permutation.join(" ");
+}
+
+function setRandomStart() {
+  const n = Number(elements.n.value);
+  if (!Number.isInteger(n) || n < 2 || n > 7) {
+    return;
+  }
+  setStartPermutation(randomPermutation(n));
 }
 
 function hashString(text) {
@@ -377,10 +404,21 @@ function initializeSession() {
   );
 }
 
+function reinitializeFromControls() {
+  if (!workerReady || busy) {
+    return;
+  }
+  try {
+    initializeSession();
+  } catch (error) {
+    setStatus(error instanceof Error ? error.message : String(error));
+  }
+}
+
 function resetIdentity() {
   const n = Number(elements.n.value);
   const start = Array.from({ length: n }, (_, index) => index + 1);
-  elements.start.value = start.join(" ");
+  setStartPermutation(start);
   if (!workerReady) {
     return;
   }
@@ -409,6 +447,17 @@ worker.addEventListener("message", (event) => {
     setBusy(false);
     setStatus(`Error: ${message}`);
   }
+});
+
+worker.addEventListener("error", (event) => {
+  setBusy(false);
+  const location = event.filename ? ` (${event.filename}:${event.lineno ?? 0})` : "";
+  setStatus(`Worker failed to load${location}. Check network access to Pyodide.`);
+});
+
+worker.addEventListener("messageerror", () => {
+  setBusy(false);
+  setStatus("Worker message failed to deserialize.");
 });
 
 elements.initializeButton.addEventListener("click", () => {
@@ -440,21 +489,33 @@ elements.resetButton.addEventListener("click", () => {
   }
 });
 
+elements.randomizeStartButton.addEventListener("click", () => {
+  setRandomStart();
+  reinitializeFromControls();
+});
+
 elements.n.addEventListener("change", () => {
   const n = Number(elements.n.value);
-  if (Number.isInteger(n) && n >= 2) {
-    elements.start.value = Array.from({ length: n }, (_, index) => index + 1).join(" ");
-    if (latestSnapshot) {
-      drawChart({
-        n,
-        histogramCounts: new Array(getPermutationOrder(n).length).fill(0),
-      });
-    }
+  if (Number.isInteger(n) && n >= 2 && n <= 7) {
+    setRandomStart();
+    reinitializeFromControls();
   }
 });
 
 elements.primeSlider.addEventListener("input", () => {
   updatePrimeDisplay();
+});
+
+elements.primeSlider.addEventListener("change", () => {
+  reinitializeFromControls();
+});
+
+elements.seed.addEventListener("change", () => {
+  reinitializeFromControls();
+});
+
+elements.start.addEventListener("change", () => {
+  reinitializeFromControls();
 });
 
 window.addEventListener("resize", () => {
@@ -464,6 +525,7 @@ window.addEventListener("resize", () => {
 });
 
 initializePrimeSlider();
+setRandomStart();
 drawChart({
   n: Number(elements.n.value),
   histogramCounts: new Array(getPermutationOrder(Number(elements.n.value)).length).fill(0),

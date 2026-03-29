@@ -149,7 +149,7 @@ body::before {
     minmax(126px, 1fr)
     minmax(188px, 1.5fr);
   gap: 12px;
-  align-items: end;
+  align-items: start;
 }
 
 .controls-grid label {
@@ -427,4 +427,5 @@ th {
     align-items: flex-start;
     flex-direction: column;
   }
+
 }
