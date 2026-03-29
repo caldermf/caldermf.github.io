@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Burnside Process Sampler</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <h1>Burnside Sampler on the Symmetric Group</h1>
+        <p class="lede">
+          An interactive implementation of the sampling algorithm in <a class="lede" href="https://arxiv.org/abs/2510.02285">"Markov chains on Weyl groups from the geometry of the flag variety."</a> Adjust the field characteristic and starting element. By the results of our paper, choosing a large characteristic gives Steinberg cell clusters, while a small one gives near-uniform randomness!
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="card controls-card">
+          <div class="card-head">
+            <h2>Controls</h2>
+          </div>
+
+          <form id="controls" class="controls-grid">
+            <label>
+              <span>Prime characteristic</span>
+              <div class="slider-shell">
+                <input id="prime-slider" name="q" type="range" min="0" max="0" step="1" value="0">
+                <strong id="prime-display" class="slider-value mono">101</strong>
+              </div>
+            </label>
+
+            <label>
+              <span>n</span>
+              <input id="dimension-n" name="n" type="number" min="2" max="7" step="1" value="4">
+            </label>
+
+            <label>
+              <span>Steps</span>
+              <input id="step-count" name="steps" type="number" min="1" max="5000" step="1" value="200">
+            </label>
+
+            <label>
+              <span>Seed</span>
+              <input id="seed" name="seed" type="number" step="1" value="20260329">
+            </label>
+
+            <label class="wide">
+              <span>Start permutation</span>
+              <input id="start-state" name="start" type="text" value="1 2 3 4" spellcheck="false">
+            </label>
+          </form>
+
+          <div class="button-row">
+            <button id="initialize-button" class="button button-primary" type="button">Initialize</button>
+            <button id="run-button" class="button" type="button">Run batch</button>
+            <button id="step-button" class="button" type="button">Step once</button>
+            <button id="reset-button" class="button button-ghost" type="button">Reset to identity</button>
+          </div>
+
+          <div class="status-row">
+            <span class="status-label">Status</span>
+            <span id="status-text" class="status-text">Loading Pyodide worker…</span>
+          </div>
+        </section>
+
+        <section class="card chart-card">
+          <div class="card-head">
+            <h2>Permutation-State Histogram</h2>
+            <p class="card-note">Lexicographic order on S_n; same color means same right Steinberg cell, via the RSK insertion tableau P</p>
+          </div>
+          <canvas id="distribution-chart" width="960" height="420" aria-label="Visit distribution chart"></canvas>
+        </section>
+
+        <section class="card list-card">
+          <div class="card-head">
+            <h2>Recent trajectory</h2>
+            <p class="card-note">Most recent states in the Markov chain</p>
+          </div>
+          <div id="history-strip" class="history-strip"></div>
+        </section>
+
+        <section class="card list-card">
+          <div class="card-head">
+            <h2>Top states</h2>
+            <p class="card-note">Permutation frequencies in descending order</p>
+          </div>
+          <div id="top-states" class="table-shell"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
