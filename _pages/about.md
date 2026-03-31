@@ -22,3 +22,5 @@ I am a Gibbs Assistant Professor at Yale University. I am interested in the inte
 From 2024-2025, I was a Szeg&#337; Assistant Professor at Stanford University. 
 
 From 2019-2024, I completed my PhD at MIT under the supervision of Roman Bezrukavnikov.
+
+On [my GitHub page](https://github.com/caldermf) you can find my technical projects, most of which I developed as research tools related to the papers listed here.
