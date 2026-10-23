@@ -1,24 +1,44 @@
-// Color, type, and spacing tokens. Every other stylesheet draws from these.
+// Color, type, spacing, and grid tokens. Every other stylesheet draws from these.
+
+// Source Serif 4, subset and renamed under the OFL (see assets/fonts/OFL.txt). Self-hosting keeps
+// the OpenType features the hosted version drops: old-style figures and true small caps.
+@font-face {
+  font-family: "CMF Serif";
+  src: url("../fonts/CMFSerif-Roman.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CMF Serif";
+  src: url("../fonts/CMFSerif-Italic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
-  --paper: #fcfbf8;
-  --ink: #1d1c1a;
-  --muted: #6a665e;
-  --rule: #e4e0d8;
-  --link: #2b4f81;
-  --link-underline: rgba(43, 79, 129, 0.32);
-  --selection: rgba(43, 79, 129, 0.14);
+  // Natural book stock, printing ink, pencil, and blue-black fountain-pen ink for links.
+  --paper: #f4eee2;
+  --ink: #2b2620;
+  --muted: #6e6458;
+  --rule: #ddd3c2;
+  --link: #284670;
+  --link-underline: rgba(40, 70, 112, 0.34);
+  --selection: rgba(40, 70, 112, 0.14);
+  --grain-opacity: 0.05;
   --image-filter: none;
 
-  --serif: "Source Serif 4", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --serif: "CMF Serif", "Source Serif 4", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
 
   --text-small: 0.875rem;
   --text-base: 1rem;
   --text-section: 1.25rem;
-  --text-title: 2rem;
+  --text-title: 2.25rem;
 
   --leading: 1.55;
-  --leading-tight: 1.2;
+  --leading-tight: 1.15;
 
   // One spacing scale, used for every gap on the site.
   --space-1: 0.25rem;
@@ -28,21 +48,35 @@
   --space-5: 2.5rem;
   --space-6: 4rem;
 
-  --measure: 40rem;
+  // Two columns in the ratio 1:2, an octave: a margin column for the portrait, figures,
+  // and marginal heads, and a text column of about 66 characters.
+  --margin-col: 16rem;
+  --gutter-col: 2.5rem;
+  --text-col: 32rem;
+  --page-width: calc(var(--margin-col) + var(--gutter-col) + var(--text-col));
   --gutter: 1.25rem;
 
   color-scheme: light;
 }
 
+// One column below the two-column breakpoint, kept to the reading measure.
+@media (max-width: 57.99em) {
+  :root {
+    --page-width: 34rem;
+  }
+}
+
 @mixin dark-tokens {
-  --paper: #171614;
-  --ink: #e7e3db;
-  --muted: #a39e94;
-  --rule: #2e2c28;
-  --link: #a8c1e6;
-  --link-underline: rgba(168, 193, 230, 0.32);
-  --selection: rgba(168, 193, 230, 0.2);
-  --image-filter: brightness(0.92);
+  // The same page by lamplight.
+  --paper: #1d1a16;
+  --ink: #e8dfcf;
+  --muted: #a6998a;
+  --rule: #3a342b;
+  --link: #a9bfdc;
+  --link-underline: rgba(169, 191, 220, 0.34);
+  --selection: rgba(169, 191, 220, 0.2);
+  --grain-opacity: 0.035;
+  --image-filter: brightness(0.9) sepia(0.06);
 
   color-scheme: dark;
 }

@@ -1,15 +1,20 @@
 ---
 layout: default
 ---
-{% if page.collection == 'projects' -%}
-<p class="back-link"><a class="plain" href="{{ '/projects/' | relative_url }}">All projects and notes</a></p>
-{%- endif %}
 <header class="page-header">
+  {% if page.collection == 'projects' -%}
+  <p class="back-link"><a class="plain" href="{{ '/projects/' | relative_url }}">All projects and notes</a></p>
+  {%- endif %}
   <h1>{{ page.title }}</h1>
   {% if page.description != blank %}<p class="page-description">{{ page.description }}</p>{% endif %}
 </header>
 
 <article class="page-content">
+  {% if page.collection == 'projects' and page.img -%}
+  <figure class="margin-figure">
+    {% include figure.html path=page.img alt=page.title sizes="272px" %}
+  </figure>
+  {%- endif %}
   {{ content }}
 </article>
 

@@ -1,13 +1,5 @@
 // Projects and notes: a list with small, uniformly cropped images.
 
-.project-group + .project-group {
-  margin-top: var(--space-5);
-}
-
-.project-group h2 {
-  margin-bottom: var(--space-4);
-}
-
 .project-list {
   margin: 0;
   padding: 0;
@@ -26,6 +18,36 @@
 
   p {
     margin: 0;
+  }
+}
+
+// On wide screens each image stands in the margin column, flush against its description.
+@media (min-width: 58em) {
+  .page-content > .project-list {
+    grid-column: 1 / -1;
+  }
+
+  .page-content > h2.list-head {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .page-content > h2.list-head + .project-list {
+    margin-top: var(--space-4);
+  }
+
+  .project > div {
+    grid-column: 2;
+  }
+
+  .project {
+    grid-template-columns: var(--margin-col) minmax(0, var(--text-col));
+    column-gap: var(--gutter-col);
+  }
+
+  .project-image {
+    justify-self: end;
+    width: 9.5rem;
   }
 }
 

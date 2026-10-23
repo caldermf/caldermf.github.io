@@ -1,50 +1,60 @@
 // Publication lists (home and /publications/) and individual paper pages.
 
 .publications-heading {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
-.publication-count {
-  margin: 0 0 var(--space-3);
-  color: var(--muted);
-}
-
-// Subject filters read as a line of text, not as tabs or chips.
+// Subject filters: a row of tabs resting on a hairline, the current one underscored.
 .publication-filters {
   margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--rule);
   font-size: var(--text-small);
 
-  button {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-4);
+    margin: 0;
     padding: 0;
+    list-style: none;
+  }
+
+  li {
+    flex: none;
+  }
+
+  li + li {
+    margin-top: 0;
+  }
+
+  button {
+    padding: var(--space-2) 0;
     border: 0;
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
     background: none;
-    color: var(--link);
+    color: var(--muted);
     cursor: pointer;
 
     &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
+      color: var(--ink);
     }
 
     &[aria-pressed="true"] {
       color: var(--ink);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
+      border-bottom-color: var(--ink);
       cursor: default;
     }
   }
 }
 
-// Years: a quiet label above each group, hanging in the left margin on wide screens.
+// Years: a quiet label above each group, or in the margin column on wide screens.
 h2.bibliography {
   margin: var(--space-5) 0 var(--space-3);
   color: var(--muted);
   font-size: var(--text-base);
   font-weight: 400;
   line-height: var(--leading);
-  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .publication-list > h2.bibliography:first-child {
@@ -65,13 +75,19 @@ ol.bibliography {
   }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 58em) {
+  .page-content > .publications {
+    grid-column: 1 / -1;
+  }
+
   .publication-list {
     display: grid;
-    grid-template-columns: 4rem minmax(0, 1fr);
-    column-gap: var(--space-4);
-    margin-left: calc(-4rem - var(--space-4));
+    grid-template-columns: var(--margin-col) minmax(0, var(--text-col));
+    column-gap: var(--gutter-col);
+    row-gap: var(--space-5);
+    align-items: baseline;
 
+    // Like a side head in a book, the year sits flush against the text it labels.
     h2.bibliography {
       grid-column: 1;
       margin: 0;
@@ -80,11 +96,6 @@ ol.bibliography {
 
     ol.bibliography {
       grid-column: 2;
-      margin-bottom: var(--space-5);
-    }
-
-    ol.bibliography:last-child {
-      margin-bottom: 0;
     }
   }
 }
@@ -133,7 +144,6 @@ ol.bibliography {
 }
 
 .paper-abstract {
-  max-width: 36rem;
   margin-top: var(--space-3);
   padding-left: var(--space-3);
   border-left: 1px solid var(--rule);
@@ -142,18 +152,14 @@ ol.bibliography {
 
 // Individual paper pages
 
-.publication-detail {
+.publication-header {
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     margin-bottom: var(--space-3);
   }
 
-  header p {
+  p {
     margin: 0;
-  }
-
-  .publication-authors {
-    color: var(--ink);
   }
 
   .publication-meta {
@@ -166,36 +172,13 @@ ol.bibliography {
     color: var(--muted);
     font-size: var(--text-small);
   }
-
-  .publication-links {
-    margin: var(--space-4) 0 var(--space-5);
-  }
-
-  .publication-figure {
-    float: right;
-    width: 11rem;
-    margin: var(--space-1) 0 var(--space-3) var(--space-4);
-
-    img {
-      border: 1px solid var(--rule);
-    }
-  }
-
-  h2 {
-    margin-bottom: var(--space-3);
-  }
-
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
 }
 
-@media (max-width: 36em) {
-  .publication-detail .publication-figure {
-    float: none;
-    width: 11rem;
-    margin: 0 0 var(--space-4);
-  }
+.publication-links {
+  margin-bottom: var(--space-5);
+}
+
+.publication-abstract h2 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-base);
 }

@@ -1,37 +1,43 @@
 ---
 layout: default
 ---
-<div class="intro profile">
-  <h1><span class="name-part">{{ site.first_name }}</span> <span class="name-part">{{ site.last_name }}</span></h1>
+<section class="intro profile">
+  <div class="frontispiece">
+    {% if page.profile.image -%}
+    <div class="portrait">
+      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+      {% include figure.html
+        path=profile_image_path
+        alt="Calder Morton-Ferguson"
+        loading="eager"
+        fetchpriority="high"
+        sizes="(max-width: 928px) 255px, 272px"
+        cache_bust=true -%}
+    </div>
+    {%- endif %}
 
-  {% if page.profile.image -%}
-  <div class="portrait">
-    {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-    {% include figure.html
-      path=profile_image_path
-      alt="Calder Morton-Ferguson"
-      loading="eager"
-      fetchpriority="high"
-      sizes="(max-width: 640px) 110px, 171px"
-      cache_bust=true -%}
-  </div>
-  {%- endif %}
-
-  <div class="bio">
-    {{ content }}
+    {% if page.social -%}
+    <div class="profile-social">
+      {% if page.profile.address -%}
+      {%- assign address = page.profile.address | strip_html | strip | split: " at " -%}
+      <p class="email"><span>{{ address[0] }}</span> <span>at {{ address[1] }}</span></p>
+      {%- endif %}
+      <nav aria-label="Research and social profiles">
+        <ul class="icon-links">
+          {% include social.html %}
+        </ul>
+      </nav>
+    </div>
+    {%- endif %}
   </div>
 
-  {% if page.social -%}
-  <div class="profile-social">
-    {% if page.profile.address %}<p class="email">{{ page.profile.address | strip_html | strip }}</p>{% endif %}
-    <nav aria-label="Research and social profiles">
-      <ul class="dot-list">
-        {% include social.html %}
-      </ul>
-    </nav>
+  <div class="title-page">
+    <h1><span class="name-part">{{ site.first_name }}</span> <span class="name-part">{{ site.last_name }}</span></h1>
+    <div class="bio prose">
+      {{ content }}
+    </div>
   </div>
-  {%- endif %}
-</div>
+</section>
 
 {% if page.publication_list -%}
 {% include publication_list.html heading="Publications" %}

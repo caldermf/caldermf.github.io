@@ -1,12 +1,12 @@
 {%- if site.orcid_id %}
-        <li><a class="plain" href="https://orcid.org/{{ site.orcid_id }}">ORCID</a></li>
+        <li><a href="https://orcid.org/{{ site.orcid_id }}" title="ORCID" aria-label="ORCID">{% include icon.html name="orcid" %}</a></li>
 {%- endif %}
 {%- if site.scholar_userid %}
-        <li><a class="plain" href="https://scholar.google.com/citations?user={{ site.scholar_userid }}">Google Scholar</a></li>
+        <li><a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="googlescholar" %}</a></li>
 {%- endif %}
 {%- if site.github_username %}
-        <li><a class="plain" href="https://github.com/{{ site.github_username }}">GitHub</a></li>
+        <li><a href="https://github.com/{{ site.github_username }}" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a></li>
 {%- endif %}
 {%- if site.linkedin_username %}
-        <li><a class="plain" href="https://www.linkedin.com/in/{{ site.linkedin_username }}/">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" title="LinkedIn" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>
 {%- endif %}

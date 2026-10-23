@@ -1,4 +1,4 @@
-// Element defaults: a single serif, one reading size, and quiet links.
+// Element defaults: one serif at one reading size, book figures, and quiet links.
 
 *,
 *::before,
@@ -12,12 +12,6 @@ html {
   text-size-adjust: 100%;
 }
 
-@media (min-width: 48em) {
-  html {
-    font-size: 112.5%; // 18px
-  }
-}
-
 body {
   margin: 0;
   background: var(--paper);
@@ -27,8 +21,37 @@ body {
   font-optical-sizing: auto;
   font-kerning: normal;
   font-variant-ligatures: common-ligatures;
+  // Text figures, as in a book.
+  font-variant-numeric: oldstyle-nums proportional-nums;
   line-height: var(--leading);
   text-rendering: optimizeLegibility;
+}
+
+// A faint fibre in the paper. Fixed behind the content, ignored by pointer and print.
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::before {
+    filter: invert(1);
+  }
+}
+
+:root[data-theme="dark"] body::before {
+  filter: invert(1);
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
 }
 
 // Light text on a dark ground looks heavier than the reverse; thin it slightly.
@@ -61,9 +84,11 @@ h3 {
   text-wrap: balance;
 }
 
+// Display sizes are set in the regular weight; the optical size axis supplies the contrast.
 h1 {
   font-size: var(--text-title);
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }
 
 h2 {
@@ -86,14 +111,6 @@ p {
   text-wrap: pretty;
 }
 
-// Narrow columns rag badly without hyphenation; wide ones don't need it.
-@media (max-width: 36em) {
-  p {
-    hyphens: auto;
-    hyphenate-limit-chars: 7 3 3;
-  }
-}
-
 ul,
 ol {
   padding-left: var(--space-4);
@@ -106,6 +123,13 @@ li + li {
 strong,
 b {
   font-weight: 600;
+}
+
+// Acronyms in running text are set in small caps so they don't shout.
+abbr {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.04em;
+  text-decoration: none;
 }
 
 hr {
@@ -147,6 +171,28 @@ a:hover {
 button {
   font: inherit;
   color: inherit;
+}
+
+// Running prose is set like a book page: justified and hyphenated, paragraphs marked by an
+// indent rather than a blank line. Narrow screens rag better than they justify.
+.prose {
+  // Bringhurst's minimum: at least two letters before a break and three after it.
+  hyphens: auto;
+  hyphenate-limit-chars: 5 2 3;
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    text-indent: 1.5em;
+  }
+}
+
+@media (min-width: 36em) {
+  .prose p {
+    text-align: justify;
+  }
 }
 
 // Links that sit in lists of links read as text; they underline only on hover.
