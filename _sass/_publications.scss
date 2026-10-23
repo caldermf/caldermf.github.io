@@ -221,10 +221,30 @@ ol.bibliography {
 }
 
 .publication-links {
-  margin: var(--space-4) 0 var(--space-5);
+  margin-top: var(--space-4);
 }
 
-.publication-abstract h2 {
-  margin-bottom: var(--space-3);
-  font-size: var(--text-base);
+// The abstract is the body of the paper's page, below the opening spread.
+.paper-abstract-page {
+  margin-top: var(--space-6);
+
+  h2 {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: 58em) {
+  .paper-page .publication-header h1 {
+    font-size: 2rem;
+  }
+
+  // The abstract runs the full width of the page. A line that long needs more lead, so the eye
+  // can find its way back to the start of the next one.
+  // At this width the rag is even without hyphenation, so leave words whole.
+  .paper-abstract-page .abstract-body {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    hyphens: manual;
+  }
 }

@@ -128,7 +128,7 @@ module ResearchSite
         data['first_page'] = pages.first
         data['last_page'] = pages.last if pages.length == 2
       end
-      data['publication_details'] = [data['journal'], data['volume'] && "vol. #{data['volume']}", data['issue'] && "no. #{data['issue']}", data['pages'] && "pp. #{data['pages']}", data['citation_year']].compact.join(', ')
+      data['publication_details'] = [data['journal'], data['volume'] && "vol. #{data['volume']}", data['issue'] && "no. #{data['issue']}", data['pages'] && "pp. #{data['pages'].gsub('--', '–')}", data['citation_year']].compact.join(', ')
       data['schema'] = article_schema(data)
       data
     end
@@ -210,8 +210,8 @@ module ResearchSite
         This is Calder Morton-Ferguson's personal research website. Researcher identity is also linked through ORCID, Google Scholar, GitHub, and LinkedIn on the homepage.
 
         ## Main pages
-        - [Biography and publications](#{url('/')}): Current research interests, academic background, and the full publication list.
-        - [Publications](#{url('/publications/')}): Papers grouped by original arXiv year; journal publication dates are listed separately.
+        - [Biography and papers](#{url('/')}): Current research interests, academic background, and the full publication list.
+        - [Papers](#{url('/publications/')}): Papers grouped by original arXiv year; journal publication dates are listed separately.
         - [Research software and notes](#{url('/projects/')}): Projects, interactive demonstrations, talks, and notes.
         - [Teaching](#{url('/teaching/')}): Mathematics teaching experience.
         - [CV](#{url('/assets/pdf/cv.pdf')}): Academic CV in PDF format.
@@ -272,7 +272,7 @@ module ResearchSite
       end
       unless home
         crumbs = [{ '@type' => 'ListItem', 'position' => 1, 'name' => NAME, 'item' => url('/') }]
-        parent = page.data['paper'] ? ['/publications/', 'Publications'] : (page.url.start_with?('/projects/') && page.url != '/projects/' ? ['/projects/', 'Projects'] : nil)
+        parent = page.data['paper'] ? ['/publications/', 'Papers'] : (page.url.start_with?('/projects/') && page.url != '/projects/' ? ['/projects/', 'Projects'] : nil)
         crumbs << { '@type' => 'ListItem', 'position' => 2, 'name' => parent[1], 'item' => url(parent[0]) } if parent
         crumbs << { '@type' => 'ListItem', 'position' => crumbs.length + 1, 'name' => page.data['title'], 'item' => canonical }
         graph << { '@type' => 'BreadcrumbList', '@id' => "#{canonical}#breadcrumbs", 'itemListElement' => crumbs }

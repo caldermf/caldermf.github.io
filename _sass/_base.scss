@@ -166,8 +166,9 @@ button {
   color: inherit;
 }
 
-// Running prose is set like a book page: justified and hyphenated, with a line space between
-// paragraphs (an indent or a space, never both). Narrow screens rag better than they justify.
+// Running prose is set ragged right and hyphenated, with a line space between paragraphs (an
+// indent or a space, never both). Browsers justify line by line, which leaves loose lines; TeX
+// balances whole paragraphs. Ragged right is the honest setting on screen.
 .prose {
   // Bringhurst's minimum: at least two letters before a break and three after it.
   hyphens: auto;
@@ -180,12 +181,6 @@ button {
   // Exactly one line of space, so every line stays on the same baseline rhythm.
   p + p {
     margin-top: calc(var(--leading) * 1em);
-  }
-}
-
-@media (min-width: 36em) {
-  .prose p {
-    text-align: justify;
   }
 }
 

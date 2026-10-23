@@ -1,52 +1,57 @@
 ---
 layout: default
 ---
-<p class="back-link"><a class="plain" href="{{ '/publications/' | relative_url }}">All publications</a></p>
-<article class="spread">
-  {% if page.paper.preview -%}
-  <figure class="spread-figure">
-    {% include figure.html path=page.paper.preview alt=page.paper.preview_alt sizes="(max-width: 928px) 170px, 272px" %}
-  </figure>
-  {%- endif %}
+<p class="back-link"><a class="plain" href="{{ '/publications/' | relative_url }}">All papers</a></p>
+<article class="paper-page">
+  <div class="spread">
+    {% if page.paper.preview -%}
+    <figure class="spread-figure">
+      {% include figure.html path=page.paper.preview alt=page.paper.preview_alt sizes="(max-width: 928px) 170px, 272px" %}
+    </figure>
+    {%- endif %}
 
-  <div class="spread-main">
-    <header class="publication-header">
-      <h1>{{ page.paper.title | escape }}</h1>
-      {%- assign authors = page.paper.authors -%}
-      {%- assign author_count = authors | size %}
-      <p class="publication-authors">
-        {%- for author in authors -%}
-          {%- unless forloop.first -%}{%- if author_count > 2 -%},{%- endif %} {% if forloop.last %}and {% endif -%}{%- endunless -%}
-          <span class="author">{{ author | escape }}</span>
-        {%- endfor -%}
-      </p>
-      {% if page.paper.journal %}<p class="publication-meta"><i>{{ page.paper.journal | escape }}</i>{{ page.paper.publication_details | remove_first: page.paper.journal | escape }}.</p>{% endif %}
-      {% if page.paper.arxiv_date != empty %}
-      <p class="publication-meta">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv on <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>
-      {% endif %}
-      {% if page.paper.subjects.size > 0 %}
-      <ul class="publication-tags dot-list" aria-label="Subjects">
-        {%- for subject in page.paper.subjects %}<li class="subject-label">{{ subject.label | escape }}</li>{% endfor -%}
-      </ul>
-      {% endif %}
-    </header>
+    <div class="spread-main">
+      <header class="publication-header">
+        <h1>{{ page.paper.title | escape }}</h1>
+        {%- assign authors = page.paper.authors -%}
+        {%- assign author_count = authors | size %}
+        <p class="publication-authors">
+          {%- for author in authors -%}
+            {%- unless forloop.first -%}{%- if author_count > 2 -%},{%- endif %} {% if forloop.last %}and {% endif -%}{%- endunless -%}
+            <span class="author">{{ author | escape }}</span>
+          {%- endfor -%}
+        </p>
+        {% if page.paper.journal %}<p class="publication-meta"><i>{{ page.paper.journal | escape }}</i>{{ page.paper.publication_details | remove_first: page.paper.journal | escape | replace: "–", "–&#8288;" }}.</p>{% endif %}
+        {% if page.paper.arxiv_date != empty %}
+        <p class="publication-meta">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv on <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>
+        {% endif %}
+        {% if page.paper.subjects.size > 0 %}
+        <ul class="publication-tags dot-list" aria-label="Subjects">
+          {%- for subject in page.paper.subjects %}<li class="subject-label">{{ subject.label | escape }}</li>{% endfor -%}
+        </ul>
+        {% endif %}
+      </header>
 
-    <nav class="publication-links" aria-label="Paper resources">
-      <ul class="dot-list">
-        <li><a class="plain" href="{{ page.paper.arxiv_url }}">{% if page.paper.is_appendix %}Full paper on {% endif %}arXiv</a></li>
-        <li><a class="plain" href="{{ page.paper.pdf_url }}">PDF</a></li>
-        {% if page.paper.publisher_url %}<li><a class="plain" href="{{ page.paper.publisher_url | escape }}">Journal version</a></li>{% endif %}
-        {% if page.paper.code_url %}<li><a class="plain" href="{{ page.paper.code_url }}">Source code</a></li>{% endif %}
-      </ul>
-    </nav>
-
-    {% if page.paper.abstract != empty %}
-    <section class="publication-abstract" aria-labelledby="abstract-title">
-      <h2 id="abstract-title">Abstract</h2>
-      <div class="prose"><p>{{ page.paper.abstract | escape }}</p></div>
-    </section>
-    {% else %}
-    <p>This contribution is an appendix to the paper linked above. The full text is available in that paper.</p>
-    {% endif %}
+      <nav class="publication-links" aria-label="Paper resources">
+        <ul class="dot-list">
+          <li><a class="plain" href="{{ page.paper.arxiv_url }}">{% if page.paper.is_appendix %}Full paper on {% endif %}arXiv</a></li>
+          <li><a class="plain" href="{{ page.paper.pdf_url }}">PDF</a></li>
+          {% if page.paper.publisher_url %}<li><a class="plain" href="{{ page.paper.publisher_url | escape }}">Journal version</a></li>{% endif %}
+          {% if page.paper.code_url %}<li><a class="plain" href="{{ page.paper.code_url }}">Source code</a></li>{% endif %}
+        </ul>
+      </nav>
+    </div>
   </div>
+
+  {%- comment -%} The abstract is the body of the page, set across its full width. {%- endcomment %}
+  {% if page.paper.abstract != empty %}
+  <section class="paper-abstract-page" aria-labelledby="abstract-title">
+    <h2 id="abstract-title">Abstract</h2>
+    <div class="abstract-body prose"><p>{{ page.paper.abstract | escape }}</p></div>
+  </section>
+  {% else %}
+  <section class="paper-abstract-page">
+    <p>This contribution is an appendix to the paper linked above. The full text is available in that paper.</p>
+  </section>
+  {% endif %}
 </article>
