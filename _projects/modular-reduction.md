@@ -1,7 +1,7 @@
 ---
 layout: page
-title: modular reduction
-description: a Python and Sage research package for modular reduction of complex representations of finite reductive groups
+title: Modular reduction
+description: A Python and Sage research package for modular reduction of complex representations of finite reductive groups.
 img: assets/img/modular.png
 project_url: https://github.com/caldermf/modular-reduction
 importance: 2

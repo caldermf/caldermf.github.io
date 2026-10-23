@@ -1,0 +1,84 @@
+// Projects and notes: a list with small, uniformly cropped images.
+
+.project-group + .project-group {
+  margin-top: var(--space-5);
+}
+
+.project-group h2 {
+  margin-bottom: var(--space-4);
+}
+
+.project-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li + li {
+    margin-top: var(--space-4);
+  }
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: start;
+
+  p {
+    margin: 0;
+  }
+}
+
+.project-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--rule);
+}
+
+.project .project-title {
+  margin: 0;
+}
+
+.project-title a {
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.project-description {
+  color: var(--muted);
+}
+
+.project-links {
+  margin-top: var(--space-1) !important;
+  font-size: var(--text-small);
+}
+
+@media (max-width: 36em) {
+  .project {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+  }
+}
+
+// Teaching and other entry lists: course on one line, details beneath.
+
+.entries {
+  padding-left: 0;
+  list-style: none;
+
+  li + li {
+    margin-top: var(--space-3);
+  }
+
+  .detail {
+    display: block;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+}

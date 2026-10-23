@@ -9,7 +9,8 @@ document.querySelectorAll('.publications').forEach((list) => {
     subjects: paper.dataset.paperSubjects.split(' '),
   }));
   const groups = Array.from(list.querySelectorAll('ol.bibliography'));
-  const status = controls.querySelector('.publication-filter-status');
+  const status = list.querySelector('.publication-count');
+  const allText = status.textContent;
 
   function select(button) {
     const subject = button.dataset.subject;
@@ -26,11 +27,10 @@ document.querySelectorAll('.publications').forEach((list) => {
     });
     buttons.forEach((option) => option.setAttribute('aria-pressed', String(option === button)));
     status.textContent = subject === 'all'
-      ? `All ${count} papers`
-      : `${count} ${count === 1 ? 'paper' : 'papers'} · ${button.textContent.trim()}`;
+      ? allText
+      : `${count} of ${status.dataset.total} papers in ${button.textContent.trim().toLowerCase()}.`;
   }
 
   buttons.forEach((button) => button.addEventListener('click', () => select(button)));
-  select(buttons[0]);
   controls.hidden = false;
 });

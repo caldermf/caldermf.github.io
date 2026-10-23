@@ -19,14 +19,14 @@
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <!-- Header -->
     {%- include header.html %}
 
     <!-- Content -->
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <main id="main-content" class="container mt-5" tabindex="-1">
+    <main id="main-content" class="wrap" tabindex="-1">
       {{ content }}
     </main>
 
@@ -34,11 +34,7 @@
     {%- include footer.html %}
 
     <!-- JavaScripts -->
-    {% include scripts/jquery.html %}
-    {% include scripts/bootstrap.html %}
-    {% include scripts/masonry.html %}
-    {% include scripts/misc.html %}
+    {% include scripts/site.html %}
     {% include scripts/mathjax.html %}
-    {% include scripts/progressBar.html %}
   </body>
 </html>

@@ -1,66 +1,54 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
-description: 
+title: Teaching
+description:
 seo_title: "Mathematics Teaching | Calder Morton-Ferguson"
 seo_description: "Calder Morton-Ferguson's mathematics teaching at Yale, Stanford, MIT, and the University of Toronto, including algebra, geometry, calculus, and analysis."
 nav: true
 nav_order: 5
 ---
 
-this is a summary of my teaching experience.
+## Yale
 
----
+- Math 3500: Abstract Algebra
+  <span class="detail">Spring 2026</span>
+- Math 2250: Linear Algebra with Proofs
+  <span class="detail">Fall 2025</span>
+{: .entries}
 
-### at Yale
+## Stanford
 
-- **Yale, Math 3500: Abstract Algebra**
-Spring 2026.
+- Math 245C: Topics in Algebraic Geometry
+  <span class="detail">Spring 2025</span>
+- Math 51: Linear Algebra and Multivariable Calculus
+  <span class="detail">Fall 2024, two sections</span>
+{: .entries}
 
-- **Yale, Math 2250: Linear Algebra with Proofs**
-Fall 2025.
+## MIT
 
----
+- 18.702: Algebra II
+  <span class="detail">Teaching assistant, spring 2023. Taught by Andrei Negut.</span>
+- 18.02B: Calculus
+  <span class="detail">Course administrator, winter 2022. Taught by John Bush.</span>
+- 18.02A: Calculus
+  <span class="detail">Teaching assistant, fall 2021. Taught by David Jerison.</span>
+- 18.725: Algebraic Geometry I and 18.726: Algebraic Geometry II
+  <span class="detail">Teaching assistant for 18.725, 2020–2021. Taught by Davesh Maulik.</span>
+{: .entries}
 
-### at Stanford
+## University of Toronto
 
-- **Stanford, Math 51: Linear Algebra and Multivariable Calculus**
-Fall 2024 (two sections).
+- MAT257: Analysis II
+  <span class="detail">Teaching assistant, 2018–2019. Taught by Edward Bierstone.</span>
+- MAT137: Calculus
+  <span class="detail">Teaching assistant, 2017–2018. Coordinated by Alfonso Gracia-Saz.</span>
+- MAT135 and MAT136: Calculus I and II
+  <span class="detail">Teaching assistant, 2016–2017.</span>
+{: .entries}
 
-- **Stanford, Math 245C: Topics in Algebraic Geometry**
-Spring 2025.
+## Boston Pre-Release Center
 
----
-
-### at MIT
-
-- **MIT, 18.702: Algebra II**.
-In spring 2023, I was a teaching assistant for 18.702 at MIT, which was taught by Andrei Negut.
-
-- **MIT, 18.02B: Calculus**.
-In winter 2022, I was the course administrator for 18.02B at MIT, which was taught by John Bush.
-
-- **MIT, 18.02A: Calculus**.
-In fall 2021, I was a teaching assistant for 18.02A at MIT, which was taught by David Jerison.
-
-- **MIT, 18.725: Algebraic Geometry I and 18.726: Algebraic Geometry II**.
-In 2020-2021, I was a teaching assistant for 18.725 (Algebraic Geometry I) at MIT, which was taught by Davesh Maulik.
-
----
-
-### at the University of Toronto
-- **University of Toronto, MAT257: Analysis II**.
-During the 2018-2019 academic year, I was a teaching assistant for MAT257 (Analysis II) at the University of Toronto, which was taught by Edward Bierstone.
-
-- **University of Toronto, MAT137: Calculus**.
-During the 2017-2018 academic year, I was a teaching assistant for MAT137 (Calculus) at the University of Toronto, which was coordinated by Alfonso Gracia-Saz.
-
-- **University of Toronto, MAT135/MAT136: Calculus I/Calculus II**.
-During the 2016-2017 academic year, I was a teaching assistant for MAT135 and MAT136 (Calculus I & II) at the University of Toronto.
-
----
-
-### at the Boston Pre-Release Center
-- **Boston Pre-Release Center, high-school equivalent math class**.
-As part of my MIT's <a href="https://www.teji.mit.edu/">Educational Justice Institute</a>, I was a TA for a course taught in the Boston Pre-Release Center attended by incarcerated students learning high-school equivalent math topics.
+- High-school equivalency mathematics
+  <span class="detail">Teaching assistant for a course attended by incarcerated students, through MIT’s <a href="https://www.teji.mit.edu/">Educational Justice Institute</a>.</span>
+{: .entries}

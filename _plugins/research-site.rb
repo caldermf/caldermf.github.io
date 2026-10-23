@@ -210,7 +210,7 @@ module ResearchSite
         This is Calder Morton-Ferguson's personal research website. Researcher identity is also linked through ORCID, Google Scholar, GitHub, and LinkedIn on the homepage.
 
         ## Main pages
-        - [Biography and selected papers](#{url('/')}): Current research interests and academic background.
+        - [Biography and publications](#{url('/')}): Current research interests, academic background, and the full publication list.
         - [Publications](#{url('/publications/')}): Papers grouped by original arXiv year; journal publication dates are listed separately.
         - [Research software and notes](#{url('/projects/')}): Projects, interactive demonstrations, talks, and notes.
         - [Teaching](#{url('/teaching/')}): Mathematics teaching experience.

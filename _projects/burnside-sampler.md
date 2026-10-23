@@ -1,7 +1,7 @@
 ---
 layout: page
-title: burnside sampler
-description: an interactive browser visualizer and verified prime-field implementation of Burnside sampling on the symmetric group
+title: Burnside sampler
+description: An interactive browser visualizer and verified prime-field implementation of Burnside sampling on the symmetric group.
 img: assets/img/burnside.png
 project_url: https://github.com/caldermf/burnside-sampler
 demo: /burnside-sampler/web/index.html

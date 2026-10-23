@@ -1,0 +1,201 @@
+// Publication lists (home and /publications/) and individual paper pages.
+
+.publications-heading {
+  margin-bottom: var(--space-2);
+}
+
+.publication-count {
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+}
+
+// Subject filters read as a line of text, not as tabs or chips.
+.publication-filters {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-small);
+
+  button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+      cursor: default;
+    }
+  }
+}
+
+// Years: a quiet label above each group, hanging in the left margin on wide screens.
+h2.bibliography {
+  margin: var(--space-5) 0 var(--space-3);
+  color: var(--muted);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.publication-list > h2.bibliography:first-child {
+  margin-top: 0;
+}
+
+// Gaps rather than margins, so papers hidden by a filter leave no space behind.
+ol.bibliography {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li + li {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 64em) {
+  .publication-list {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    column-gap: var(--space-4);
+    margin-left: calc(-4rem - var(--space-4));
+
+    h2.bibliography {
+      grid-column: 1;
+      margin: 0;
+      text-align: right;
+    }
+
+    ol.bibliography {
+      grid-column: 2;
+      margin-bottom: var(--space-5);
+    }
+
+    ol.bibliography:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.paper {
+  p {
+    margin: 0;
+  }
+}
+
+.paper-title {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.paper-authors {
+  color: var(--muted);
+}
+
+.author {
+  white-space: nowrap;
+}
+
+.author.self {
+  color: var(--ink);
+}
+
+.paper-venue {
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.paper-links {
+  margin-top: var(--space-1) !important;
+  font-size: var(--text-small);
+}
+
+.paper-abstract {
+  max-width: 36rem;
+  margin-top: var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--rule);
+  font-size: var(--text-small);
+}
+
+// Individual paper pages
+
+.publication-detail {
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: var(--space-3);
+  }
+
+  header p {
+    margin: 0;
+  }
+
+  .publication-authors {
+    color: var(--ink);
+  }
+
+  .publication-meta {
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .publication-tags {
+    margin-top: var(--space-2);
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .publication-links {
+    margin: var(--space-4) 0 var(--space-5);
+  }
+
+  .publication-figure {
+    float: right;
+    width: 11rem;
+    margin: var(--space-1) 0 var(--space-3) var(--space-4);
+
+    img {
+      border: 1px solid var(--rule);
+    }
+  }
+
+  h2 {
+    margin-bottom: var(--space-3);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@media (max-width: 36em) {
+  .publication-detail .publication-figure {
+    float: none;
+    width: 11rem;
+    margin: 0 0 var(--space-4);
+  }
+}

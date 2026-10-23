@@ -46,5 +46,5 @@ Primary references:
 - https://developers.openai.com/api/docs/bots
 # Publication subjects
 
-Edit each paper's comma-separated `subjects` field in `_bibliography/papers.bib` using IDs from `_data/publication_subjects.yml`. That file controls filter order and labels, with machine learning first. Tags appear on both publication lists and paper pages, and are included in JSON, Markdown, and structured data. Filters select one subject at a time and hide empty years; all papers remain available without JavaScript.
+Edit each paper's comma-separated `subjects` field in `_bibliography/papers.bib` using IDs from `_data/publication_subjects.yml`. That file controls filter order and labels, with machine learning first. Tags appear on paper pages, drive the subject filters on both publication lists, and are included in JSON, Markdown, and structured data. Filters select one subject at a time, hide empty years, and update the visible paper count; all papers remain available without JavaScript.
 

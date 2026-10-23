@@ -7,20 +7,11 @@ email: calder.morton.ferguson@gmail.com
 description: "Calder Morton-Ferguson is a mathematician and research scientist working on language-model reasoning, machine learning, and geometric representation theory."
 seo_title: "Calder Morton-Ferguson | Mathematics & Machine Learning"
 social_image: /assets/img/profile.jpg
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
-  with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted
-  by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 lang: en
 icon: 🍁
 url: https://caldermf.github.io
 baseurl: ""
 last_updated: false
-highlight_theme_light: github
-highlight_theme_dark: native
-navbar_fixed: true
-footer_fixed: true
-max_width: 800px
 github_username: caldermf
 linkedin_username: calder-morton-ferguson-b7396624a
 scholar_userid: z7yGETJzTboC
@@ -124,8 +115,6 @@ filtered_bibtex_keywords:
 - website
 - preview
 - altmetric
-max_author_limit: 5
-more_authors_animation_delay: 10
 external_links:
   enabled: true
   rel: external noopener
@@ -147,37 +136,7 @@ imagemagick:
   - ".tiff"
   output_formats:
     webp: "-strip -quality 82"
-enable_masonry: true
 enable_math: true
-enable_tooltips: false
 enable_darkmode: true
-enable_navbar_social: false
-enable_medium_zoom: false
-enable_progressbar: true
-academicons:
-  version: 1.9.1
-  integrity: sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=
-bootstrap:
-  version: 4.6.1
-  integrity:
-    css: sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=
-    js: sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=
-fontawesome:
-  version: 6.4.0
-  integrity: sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=
-jquery:
-  version: 3.6.0
-  integrity: sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=
 mathjax:
   version: 3.2.0
-masonry:
-  version: 4.2.2
-  integrity: sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=
-mdb:
-  version: 4.20.0
-  integrity:
-    css: sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=
-    js: sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=
-medium_zoom:
-  version: 1.0.8
-  integrity: sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=

@@ -1,50 +1,152 @@
-/******************************************************************************
- * Content
- ******************************************************************************/
+// Page frame: one centered column, a plain header, and a quiet footer.
 
-body {
-  padding-bottom: 70px;
-  color: var(--global-text-color);
-  background-color: var(--global-bg-color);
+.wrap {
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    scroll-margin-top: 66px;
+.skip-link {
+  position: absolute;
+  top: -10rem;
+  left: var(--gutter);
+  z-index: 10;
+  padding: var(--space-2) var(--space-3);
+  background: var(--paper);
+  color: var(--link);
+
+  &:focus {
+    top: var(--space-2);
   }
 }
 
-body.fixed-top-nav {
-  // Add some padding for the nav-bar.
-  padding-top: 56px;
+// Header
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
 }
 
-body.sticky-bottom-footer {
-  // Remove padding below footer.
-  padding-bottom: 0;
-}
+.site-name {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
 
-.container {
-  max-width: $max-content-width;
-}
-
-// Profile
-.profile {
-  img {
-    width: 100%;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
   }
 }
 
-// TODO: redefine content layout.
+.site-nav {
+  margin-left: auto;
 
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-/******************************************************************************
- * Publications
- ******************************************************************************/
+  li + li {
+    margin-top: 0;
+  }
 
-// TODO: redefine publications layout.
+  a {
+    color: var(--muted);
+    text-decoration: none;
 
+    &:hover {
+      color: var(--ink);
+    }
 
-/*****************************************************************************
-* Projects
-*****************************************************************************/
+    &[aria-current="page"] {
+      color: var(--ink);
+    }
+  }
+}
 
-// TODO: redefine projects layout.
+@media (max-width: 30em) {
+  .site-nav {
+    margin-left: 0;
+    font-size: var(--text-small);
+
+    ul {
+      column-gap: var(--space-3);
+    }
+  }
+}
+
+// Main column
+
+main {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-6);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.page-header {
+  margin-bottom: var(--space-5);
+
+  // A page that opens with the publication list uses its count line as the subtitle.
+  &:has(+ .page-content > .publications:first-child) {
+    margin-bottom: var(--space-2);
+  }
+
+  .page-description {
+    margin: var(--space-2) 0 0;
+    color: var(--muted);
+  }
+}
+
+// Spacing for a page's own headings only, so components inside keep theirs.
+.page-content {
+  > h2 {
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  > h3 {
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+}
+
+.back-link {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-small);
+}
+
+// Footer
+
+.site-footer {
+  color: var(--muted);
+  font-size: var(--text-small);
+
+  .wrap {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-5);
+  }
+
+  .link-button {
+    color: var(--muted);
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}

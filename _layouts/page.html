@@ -1,25 +1,24 @@
 ---
 layout: default
 ---
-<!-- page.html -->
-        <div class="post">
+{% if page.collection == 'projects' -%}
+<p class="back-link"><a class="plain" href="{{ '/projects/' | relative_url }}">All projects and notes</a></p>
+{%- endif %}
+<header class="page-header">
+  <h1>{{ page.title }}</h1>
+  {% if page.description != blank %}<p class="page-description">{{ page.description }}</p>{% endif %}
+</header>
 
-          <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <p class="post-description">{{ page.description }}</p>
-          </header>
+<article class="page-content">
+  {{ content }}
+</article>
 
-          <article>
-            {% if page.collection == 'projects' %}<p><a href="{{ '/projects/' | relative_url }}">All notes and projects</a></p>{% endif %}
-            {{ content }}
-          </article>
-
-          {%- if page.related_publications != null and page.related_publications.size > 0 -%}
-          {% assign publications = page.related_publications | replace: ", ", "," | split: "," | join: "|" %}
-          <h2>References</h2>
-          <div class="publications">
-            {% bibliography -f {{ site.scholar.bibliography }} -q @*[key^={{ publications }}]* %}
-          </div>
-          {%- endif %}
-
-        </div>
+{%- if page.related_publications != null and page.related_publications.size > 0 -%}
+{% assign publications = page.related_publications | replace: ", ", "," | split: "," | join: "|" %}
+<section class="page-content">
+  <h2>References</h2>
+  <div class="publications">
+    {% bibliography -f {{ site.scholar.bibliography }} -q @*[key^={{ publications }}]* %}
+  </div>
+</section>
+{%- endif %}

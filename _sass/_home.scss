@@ -1,0 +1,93 @@
+// Home: name, biography, and contact details, with the portrait beside them.
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 9.5rem;
+  grid-template-areas:
+    "name portrait"
+    "bio portrait"
+    "contact portrait";
+  grid-template-rows: auto auto 1fr;
+  column-gap: var(--space-5);
+  margin-bottom: var(--space-6);
+
+  h1 {
+    grid-area: name;
+    margin-bottom: var(--space-4);
+  }
+
+  .portrait {
+    grid-area: portrait;
+    margin-top: var(--space-1);
+
+    img {
+      width: 100%;
+      border-radius: 2px;
+    }
+  }
+
+  .bio {
+    grid-area: bio;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .profile-social {
+    grid-area: contact;
+    margin-top: var(--space-4);
+    font-size: var(--text-small);
+  }
+
+  .email {
+    margin: 0;
+    color: var(--muted);
+  }
+}
+
+@media (max-width: 40em) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "portrait"
+      "name"
+      "bio"
+      "contact";
+    grid-template-rows: none;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .portrait {
+      width: 6.5rem;
+      margin: 0 0 var(--space-4);
+    }
+  }
+}
+
+.name-part {
+  white-space: nowrap;
+}
+
+// An inline list separated by middle dots.
+.dot-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li + li {
+    margin-top: 0;
+  }
+
+  // The dot trails its item, so a wrapped line never begins with a separator. Items
+  // hidden until JavaScript runs take no separator with them.
+  li:has(~ li:not([hidden]))::after {
+    content: "\00B7";
+    padding: 0 0.45em;
+    color: var(--muted);
+  }
+}

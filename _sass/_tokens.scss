@@ -1,0 +1,58 @@
+// Color, type, and spacing tokens. Every other stylesheet draws from these.
+
+:root {
+  --paper: #fcfbf8;
+  --ink: #1d1c1a;
+  --muted: #6a665e;
+  --rule: #e4e0d8;
+  --link: #2b4f81;
+  --link-underline: rgba(43, 79, 129, 0.32);
+  --selection: rgba(43, 79, 129, 0.14);
+  --image-filter: none;
+
+  --serif: "Source Serif 4", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+
+  --text-small: 0.875rem;
+  --text-base: 1rem;
+  --text-section: 1.25rem;
+  --text-title: 2rem;
+
+  --leading: 1.55;
+  --leading-tight: 1.2;
+
+  // One spacing scale, used for every gap on the site.
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  --measure: 40rem;
+  --gutter: 1.25rem;
+
+  color-scheme: light;
+}
+
+@mixin dark-tokens {
+  --paper: #171614;
+  --ink: #e7e3db;
+  --muted: #a39e94;
+  --rule: #2e2c28;
+  --link: #a8c1e6;
+  --link-underline: rgba(168, 193, 230, 0.32);
+  --selection: rgba(168, 193, 230, 0.2);
+  --image-filter: brightness(0.92);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-tokens;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}

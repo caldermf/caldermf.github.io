@@ -1,0 +1,15 @@
+{%- comment -%}
+  The complete publication list, grouped by original arXiv year. The home page and
+  /publications/ both show every paper, so no reader mistakes a selection for the whole.
+{%- endcomment -%}
+{%- assign paper_count = site.data.papers_by_key | size -%}
+<div class="publications">
+  {% if include.heading -%}
+  <h2 class="publications-heading">{{ include.heading }}</h2>
+  {%- endif %}
+  <p class="publication-count" role="status" aria-live="polite" data-total="{{ paper_count }}">{{ paper_count }} papers, listed by first arXiv posting, newest first.</p>
+  {% include publication_filters.html %}
+  <div class="publication-list">
+    {% bibliography -f {{ site.scholar.bibliography }} %}
+  </div>
+</div>

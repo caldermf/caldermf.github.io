@@ -2,31 +2,44 @@
 layout: default
 ---
 <article class="publication-detail">
-  <p class="publication-back"><a href="{{ '/publications/' | relative_url }}">All publications</a></p>
+  <p class="back-link"><a class="plain" href="{{ '/publications/' | relative_url }}">All publications</a></p>
   <header>
     <h1>{{ page.paper.title | escape }}</h1>
-    <p class="publication-authors">{{ page.paper.authors | join: ', ' | escape }}</p>
+    {%- assign authors = page.paper.authors -%}
+    {%- assign author_count = authors | size %}
+    <p class="publication-authors">
+      {%- for author in authors -%}
+        {%- unless forloop.first -%}{%- if author_count > 2 -%},{%- endif %} {% if forloop.last %}and {% endif -%}{%- endunless -%}
+        <span class="author">{{ author | escape }}</span>
+      {%- endfor -%}
+    </p>
+    {% if page.paper.journal %}<p class="publication-meta"><i>{{ page.paper.journal | escape }}</i>{{ page.paper.publication_details | remove_first: page.paper.journal | escape }}.</p>{% endif %}
     {% if page.paper.arxiv_date != empty %}
-    <p class="publication-date">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv: <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>
+    <p class="publication-meta">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv on <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>
     {% endif %}
-    {% if page.paper.journal %}<p>{{ page.paper.publication_details | escape }}.</p>{% endif %}
+    {% if page.paper.subjects.size > 0 %}
+    <ul class="publication-tags dot-list" aria-label="Subjects">
+      {%- for subject in page.paper.subjects %}<li>{{ subject.label | escape }}</li>{% endfor -%}
+    </ul>
+    {% endif %}
   </header>
-  {% include publication_tags.html paper=page.paper %}
   <nav class="publication-links" aria-label="Paper resources">
-    <a href="{{ page.paper.arxiv_url }}">{% if page.paper.is_appendix %}Full paper on {% endif %}arXiv</a>
-    <a href="{{ page.paper.pdf_url }}">Read PDF</a>
-    {% if page.paper.publisher_url %}<a href="{{ page.paper.publisher_url | escape }}">Journal version</a>{% endif %}
-    {% if page.paper.code_url %}<a href="{{ page.paper.code_url }}">Source code</a>{% endif %}
+    <ul class="dot-list">
+      <li><a class="plain" href="{{ page.paper.arxiv_url }}">{% if page.paper.is_appendix %}Full paper on {% endif %}arXiv</a></li>
+      <li><a class="plain" href="{{ page.paper.pdf_url }}">PDF</a></li>
+      {% if page.paper.publisher_url %}<li><a class="plain" href="{{ page.paper.publisher_url | escape }}">Journal version</a></li>{% endif %}
+      {% if page.paper.code_url %}<li><a class="plain" href="{{ page.paper.code_url }}">Source code</a></li>{% endif %}
+    </ul>
   </nav>
   {% if page.paper.preview %}
   <div class="publication-figure">
-    {% include figure.html path=page.paper.preview alt=page.paper.preview_alt zoomable=true sizes="180px" %}
+    {% include figure.html path=page.paper.preview alt=page.paper.preview_alt sizes="198px" %}
   </div>
   {% endif %}
   {% if page.paper.abstract != empty %}
   <section aria-labelledby="abstract-title">
     <h2 id="abstract-title">Abstract</h2>
-    <p>{{ page.paper.abstract | escape }}</p>
+    <p class="abstract-text">{{ page.paper.abstract | escape }}</p>
   </section>
   {% else %}
   <p>This contribution is an appendix to the paper linked above. The full text is available in that paper.</p>
