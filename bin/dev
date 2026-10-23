@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+
+exec docker compose --project-name caldermf-personal-website --file docker-compose.yml up --build "$@"

@@ -1,40 +1,22 @@
-FROM bitnami/minideb:latest
+FROM ruby:3.3-slim-bookworm
 
-Label MAINTAINER Amir Pourmand
-
-RUN apt-get update -y
-
-# add locale
-RUN apt-get -y install locales
-# Set the locale
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-# add ruby and jekyll
-RUN apt-get install --no-install-recommends ruby-full build-essential zlib1g-dev -y
-RUN apt-get install imagemagick -y
-
-# install python3 and jupyter
-RUN apt-get install python3-pip -y
-RUN python3 -m pip install jupyter --break-system-packages
-
-# install jekyll and dependencies
-RUN gem install jekyll bundler
-
-RUN mkdir /srv/jekyll
-
-ADD Gemfile /srv/jekyll
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git imagemagick libyaml-dev nodejs pkg-config \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /srv/jekyll
+ENV LANG=C.UTF-8 \
+    JEKYLL_ENV=development \
+    EXECJS_RUNTIME=Node \
+    BUNDLE_IGNORE_CONFIG=1
 
-RUN bundle install
+COPY Gemfile* ./
+RUN bundle install --jobs 4 --retry 3
+# Catch plugin/native-library load errors before starting the preview container.
+RUN bundle exec ruby -rjekyll -rexecjs -e 'Jekyll::PluginManager.require_from_bundler; abort "JavaScript runtime check failed" unless ExecJS.eval("1 + 1") == 2'
 
-# Set Jekyll environment
-ENV JEKYLL_ENV=production 
-
-EXPOSE 8080
-
-CMD ["/bin/bash", "-c", "rm -f Gemfile.lock && exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace"]
+COPY bin/docker-entrypoint /usr/local/bin/site-entrypoint
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/site-entrypoint"]
+EXPOSE 8080 35729
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--port", "8080", "--livereload", "--force_polling"]

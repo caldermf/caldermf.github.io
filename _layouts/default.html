@@ -7,7 +7,7 @@
     <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
   {%- endif -%}
   {%- if page.redirect_to -%}
-    <meta http-equiv="refresh" content="0; url={{ page.redirect_to }}/" />
+    <meta http-equiv="refresh" content="0; url={{ page.redirect_to | relative_url }}" />
   {%- endif -%}
   {% include head.html %}
 <!-- Google tag (gtag.js) -->
@@ -29,33 +29,7 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      {% if page.toc and page.toc.sidebar %}
-        {% if page.toc.sidebar == "right" %}
-        <div class="row">
-          <!-- main content area -->
-          <div class="col-sm-9">
-            {{ content }}
-          </div>
-          <!-- sidebar, which will move to the top on a small screen -->
-          <div class="col-sm-3">
-            <nav id="toc-sidebar" class="sticky-top"></nav>
-          </div>
-        </div>
-        {% else %}
-        <div class="row">
-          <!-- sidebar, which will move to the top on a small screen -->
-          <div class="col-sm-3">
-            <nav id="toc-sidebar" class="sticky-top"></nav>
-          </div>
-          <!-- main content area -->
-          <div class="col-sm-9">
-            {{ content }}
-          </div>
-        </div>
-        {% endif %}
-      {% else %}
-        {{ content }}
-      {% endif %}
+      {{ content }}
     </div>
 
     <!-- Footer -->
@@ -66,9 +40,7 @@
     {% include scripts/bootstrap.html %}
     {% include scripts/masonry.html %}
     {% include scripts/misc.html %}
-    {% include scripts/badges.html %}
     {% include scripts/mathjax.html %}
-    {% include scripts/analytics.html %}
     {% include scripts/progressBar.html %}
   </body>
 </html>

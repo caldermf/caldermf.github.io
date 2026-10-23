@@ -8,11 +8,12 @@
           <img data-zoomable class="preview z-depth-1 rounded" src="{{ entry.preview }}">
           {%- else -%}
             {%- assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' -%}
+            {%- assign preview_alt = entry.preview_alt | default: entry.preview -%}
             {% include figure.html
             path=entry_path
             class="preview z-depth-1 rounded"
             zoomable=true
-            alt=entry.preview -%}
+            alt=preview_alt -%}
           {%- endif -%}
         {%- elsif entry.abbr -%}
           {%- if site.data.venues[entry.abbr] -%}

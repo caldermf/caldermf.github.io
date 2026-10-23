@@ -16,6 +16,8 @@ permissions:
 
 jobs:
   deploy:
+    env:
+      EXECJS_RUNTIME: Node
     # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
@@ -24,12 +26,12 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2.2'
+        ruby-version: '3.3'
         bundler-cache: true
     - name: Install and Build 🔧
       run: |
-        pip3 install --upgrade jupyter
-        npm install -g mermaid.cli
+        sudo apt-get update
+        sudo apt-get install -y imagemagick
         export JEKYLL_ENV=production
         bundle exec jekyll build
     - name: Deploy 🚀

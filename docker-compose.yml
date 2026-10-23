@@ -1,9 +1,17 @@
-# this file uses prebuilt image in dockerhub
+name: caldermf-personal-website
+
 services:
   jekyll:
-    image: amirpourmand/al-folio
+    build: .
+    init: true
     ports:
-      - 8080:8080
+      - "127.0.0.1:${SITE_PORT:-8080}:8080"
+      - "127.0.0.1:35729:35729"
     volumes:
       - .:/srv/jekyll
-      - ./vendor/bundle:/usr/local/bundle  # <-- add this line
+    healthcheck:
+      test: ["CMD", "ruby", "-rnet/http", "-e", "exit(Net::HTTP.get_response(URI('http://127.0.0.1:8080/')).is_a?(Net::HTTPSuccess) ? 0 : 1)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 120s
+      retries: 3

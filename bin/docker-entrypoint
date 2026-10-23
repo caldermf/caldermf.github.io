@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+# Keep the lockfile and install only when the mounted project's gems are missing.
+bundle check || bundle install --jobs 4 --retry 3
+exec "$@"

@@ -1,3 +1,33 @@
+@misc{reapo,
+      title={{ReAPO}: Retry-Aware Policy Optimization for Efficient Exploration in {LLM} Reasoning},
+      author={Nghi Dao and Calder Morton-Ferguson and Noah Golowich and Adam Block},
+      year={2026},
+      month=oct,
+      abstract={RLVR improves language-model reasoning, but commonly relies on independent stochastic rollouts for exploration, which can repeatedly sample similar failed strategies. Prior work has seen success with approaches that guide exploration by introducing dependence into the sampling process by including incorrect solutions in the context for subsequent attempts. Still, these methods introduce the additional question of how to assign credit to each attempt. We propose to view the credit assignment through the lens of Stochastic Shortest Paths, a framework in classical reinforcement learning that seeks to minimize the expected cumulative cost to reach a terminal state (in our case, a verified successful response). We show that, under suitable simplifying assumptions, this perspective naturally leads to a simple modification to GRPO, which we call Retry-Aware Policy Optimization (ReAPO). ReAPO allocates additional generation to failed trajectories, allowing successful retries to be reinforced without rewarding preceding failures, and assigns credit in a theoretically principled way to each attempt. Across Qwen3 and OLMo-2 models from 0.6B to 4B and eight mathematical and scientific reasoning benchmarks, ReAPO improves first-attempt performance over GRPO as well as natural recent baseline algorithms, while additional ablations demonstrate the utility of both serial sampling and ReAPO's credit assignment. On Qwen3-0.6B, ReAPO also outperforms GRPO with twice the group size or twice the training steps, reaching their peak accuracy with 39\% and 31\% fewer generated tokens, respectively. Taken together, our results suggest that ReAPO is a simple yet effective approach for improving LM reasoning performance through improved exploration and retry-aware credit assignment.},
+      archivePrefix={arXiv},
+      arxiv={2610.28770v1},
+      primaryClass={cs.LG},
+      pdf={https://arxiv.org/pdf/2610.28770v1},
+      preview={reapo.png},
+      preview_alt={ReAPO (blue) and GRPO (orange) training accuracy on GSM8K-Platinum with OLMo-2, from Figure 3 (single seed)},
+      selected={true}
+}
+
+@misc{baroperation,
+      title={A bar operation on the double affine {Hecke} algebra},
+      author={Dougal Davis and Ivan Losev and Calder Morton-Ferguson},
+      year={2026},
+      month=sep,
+      abstract={We construct a bar-type operation for the affine Hecke algebra $\mathcal{H}_{W}^a$ attached to a symmetrizable Kac--Moody group. Our main tool is a geometric bimodule defined using the equivariant $K$-theory of a suitable version of the Steinberg variety for this Kac--Moody group. Using elements of this bimodule corresponding to standard and costandard Hodge $D$-modules on the Kashiwara flag variety, we define a bar involution on $\mathcal{H}_{W}^a$ by relating the left and right actions of $\mathcal{H}_{W}^a$ on this bimodule. A central issue is that the resulting formulas for the bar operation do not preserve the algebra itself and naturally produce infinite expansions. To address this, we introduce certain completions of $\mathcal{H}_{W}^a$ on which the bar operation is well-defined. For this construction, we prove a number of combinatorial finiteness results for products in $\mathcal{H}_{W}^a$. In affine type, we further analyze the level-zero part of the algebra and obtain an explicit combinatorial formula for a bar operation on a suitable localization of Cherednik's double affine Hecke algebra. In this case the bar operation itself is not an involution but we also show that this bar operation becomes an involution when the lattice parameter $q$ is set to $1$.},
+      archivePrefix={arXiv},
+      arxiv={2609.23866},
+      primaryClass={math.RT},
+      pdf={https://arxiv.org/pdf/2609.23866},
+      preview={daha.png},
+      preview_alt={Affine root hyperplanes and the limit from a positive-level parameter to a level-zero alcove, from Figure 1},
+      selected={true}
+}
+
 @misc{weightmodules,
       title={Weight modules and gluing of sheaves on the flag variety}, 
       author={Pablo Boixeda Alvarez and Calder Morton-Ferguson},
