@@ -1,0 +1,31 @@
+# Calder Morton-Ferguson
+
+> Calder Morton-Ferguson is a mathematician and research scientist working on language-model reasoning, machine learning, and geometric representation theory.
+
+This is Calder Morton-Ferguson's personal research website. Researcher identity is also linked through ORCID, Google Scholar, GitHub, and LinkedIn on the homepage.
+
+## Main pages
+- [Biography and selected papers](https://caldermf.github.io/): Current research interests and academic background.
+- [Publications](https://caldermf.github.io/publications/): Papers grouped by original arXiv year; journal publication dates are listed separately.
+- [Research software and notes](https://caldermf.github.io/projects/): Projects, interactive demonstrations, talks, and notes.
+- [Teaching](https://caldermf.github.io/teaching/): Mathematics teaching experience.
+- [CV](https://caldermf.github.io/assets/pdf/cv.pdf): Academic CV in PDF format.
+
+## Structured and plain-text research data
+- [Researcher profile](https://caldermf.github.io/profile.json): Schema.org Person data with verified profile links.
+- [Publication data](https://caldermf.github.io/publications.json): Titles, authors, original arXiv dates, abstracts, journal details, and source links.
+- [Publications in Markdown](https://caldermf.github.io/publications.md): Readable paper summaries and abstracts.
+- [BibTeX bibliography](https://caldermf.github.io/publications.bib): Bibliographic records retaining journal publication years.
+
+## Papers
+- [ReAPO: Retry-Aware Policy Optimization for Efficient Exploration in LLM Reasoning](https://caldermf.github.io/publications/reapo/): Nghi Dao, Calder Morton-Ferguson, Noah Golowich, Adam Block.
+- [A bar operation on the double affine Hecke algebra](https://caldermf.github.io/publications/baroperation/): Dougal Davis, Ivan Losev, Calder Morton-Ferguson.
+- [Markov chains on Weyl groups from the geometry of the flag variety](https://caldermf.github.io/publications/markovchains/): Persi Diaconis, Calder Morton-Ferguson.
+- [Weight modules and gluing of sheaves on the flag variety](https://caldermf.github.io/publications/weightmodules/): Pablo Boixeda Alvarez, Calder Morton-Ferguson.
+- [Modular reduction of complex representations of finite reductive groups](https://caldermf.github.io/publications/modular/): Roman Bezrukavnikov, Michael Finkelberg, David Kazhdan, Calder Morton-Ferguson.
+- [Perverse sheaves and t-structures on the thin and thick affine flag varieties](https://caldermf.github.io/publications/thinthick/): Roman Bezrukavnikov, Calder Morton-Ferguson.
+- [Polishchuk’s conjecture and Kazhdan-Laumon representations](https://caldermf.github.io/publications/cmfrationality/): Calder Morton-Ferguson.
+- [Symplectic Fourier–Deligne Transforms on G/U and the Algebra of Braids and Ties](https://caldermf.github.io/publications/cmfsymplectic/): Calder Morton-Ferguson.
+- [Kazhdan-Laumon category O, Braverman-Kazhdan Schwartz space, and the semi-infinite flag variety](https://caldermf.github.io/publications/cmfcato/): Calder Morton-Ferguson.
+- [Heaps, crystals, and preprojective algebra modules](https://caldermf.github.io/publications/dekm/): Anne Dranowski, Balázs Elek, Joel Kamnitzer, Calder Morton-Ferguson.
+- [Appendix to "The Mirković-Vilonen basis and Duistermaat-Heckman measures"](https://caldermf.github.io/publications/appendix/): Anne Dranowski, Joel Kamnitzer, Calder Morton-Ferguson.

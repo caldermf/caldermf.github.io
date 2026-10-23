@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://caldermf.github.io/#person",
+  "name": "Calder Morton-Ferguson",
+  "url": "https://caldermf.github.io/",
+  "image": "https://caldermf.github.io/assets/img/profile.jpg",
+  "description": "Calder Morton-Ferguson is a mathematician and research scientist working on language-model reasoning, machine learning, and geometric representation theory.",
+  "jobTitle": [
+    "Mathematician",
+    "Research scientist"
+  ],
+  "knowsAbout": [
+    "Machine learning",
+    "Reasoning in language models",
+    "Geometric representation theory",
+    "Algebra",
+    "Geometry",
+    "Combinatorics"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Massachusetts Institute of Technology"
+  },
+  "sameAs": [
+    "https://orcid.org/0000-0002-1955-9109",
+    "https://scholar.google.com/citations?user=z7yGETJzTboC",
+    "https://github.com/caldermf",
+    "https://www.linkedin.com/in/calder-morton-ferguson-b7396624a/"
+  ]
+}
