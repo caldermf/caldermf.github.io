@@ -13,6 +13,11 @@
             {%- endfor %}
             <li><a href="{{ '/assets/pdf/cv.pdf' | relative_url }}">CV</a></li>
           </ul>
+          {%- if site.enable_darkmode %}
+          <button class="theme-toggle" type="button" aria-label="Switch color theme" hidden>
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.25a6.75 6.75 0 0 1 0 13.5z" fill="currentColor"/></svg>
+          </button>
+          {%- endif %}
         </nav>
       </div>
     </header>

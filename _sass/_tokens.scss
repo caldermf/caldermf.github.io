@@ -37,6 +37,10 @@
   --text-section: 1.25rem;
   --text-title: 2.25rem;
 
+  // Corners soften with size: the portrait a little, small images less.
+  --radius-portrait: 6px;
+  --radius-image: 3px;
+
   --leading: 1.55;
   --leading-tight: 1.15;
 

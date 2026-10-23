@@ -6,7 +6,9 @@ document.querySelectorAll('.theme-toggle').forEach((toggle) => {
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   const current = () => root.dataset.theme || (systemDark.matches ? 'dark' : 'light');
   const label = () => {
-    toggle.textContent = current() === 'dark' ? 'Light theme' : 'Dark theme';
+    const text = `Switch to ${current() === 'dark' ? 'light' : 'dark'} theme`;
+    toggle.setAttribute('aria-label', text);
+    toggle.title = text;
   };
 
   toggle.addEventListener('click', () => {
@@ -19,7 +21,7 @@ document.querySelectorAll('.theme-toggle').forEach((toggle) => {
   });
   systemDark.addEventListener('change', label);
   label();
-  toggle.closest('li').hidden = false;
+  toggle.hidden = false;
 });
 
 // Abstracts in publication lists open in place.

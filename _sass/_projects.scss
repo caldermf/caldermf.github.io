@@ -57,6 +57,7 @@
   object-fit: cover;
   object-position: top;
   border: 1px solid var(--rule);
+  border-radius: var(--radius-image);
 }
 
 .project .project-title {

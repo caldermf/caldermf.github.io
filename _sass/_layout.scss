@@ -53,6 +53,11 @@ $two-columns: 58em;
 }
 
 .site-nav {
+  display: flex;
+  align-items: baseline;
+  flex: 1 1 auto;
+  gap: var(--space-4);
+
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -81,12 +86,49 @@ $two-columns: 58em;
   }
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-self: center;
+  margin-left: auto;
+  padding: var(--space-1);
+  margin-right: calc(-1 * var(--space-1));
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--ink);
+  }
+
+  svg {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+}
+
 @media (max-width: 30em) {
   .site-nav {
-    font-size: var(--text-small);
+    font-size: 0.8rem;
+    gap: var(--space-3);
 
     ul {
-      column-gap: var(--space-3);
+      column-gap: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 23em) {
+  :root {
+    --gutter: 1rem;
+  }
+
+  .site-nav {
+    font-size: 0.78rem;
+    gap: 0.6rem;
+
+    ul {
+      column-gap: 0.6rem;
     }
   }
 }
@@ -121,6 +163,7 @@ main {
 
   img {
     border: 1px solid var(--rule);
+    border-radius: var(--radius-image);
   }
 }
 
@@ -147,47 +190,12 @@ main {
   }
 }
 
-// Footer: as quiet as a colophon.
-
-.site-footer {
-  color: var(--muted);
-  font-size: var(--text-small);
-
-  .wrap {
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-5);
-  }
-
-  .colophon {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1) var(--space-4);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li + li {
-      margin-top: 0;
-    }
-  }
-
-  .link-button {
-    color: var(--muted);
-
-    &:hover {
-      color: var(--ink);
-    }
-  }
-}
-
 @media (min-width: $two-columns) {
-  .site-header .wrap,
-  .site-footer .wrap {
+  .site-header .wrap {
     @include two-columns;
   }
 
-  .site-nav,
-  .site-footer .colophon {
+  .site-nav {
     grid-column: 2;
   }
 

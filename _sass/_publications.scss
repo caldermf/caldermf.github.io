@@ -61,6 +61,7 @@ h2.bibliography {
   margin-top: 0;
 }
 
+
 // Gaps rather than margins, so papers hidden by a filter leave no space behind.
 ol.bibliography {
   display: flex;
@@ -73,6 +74,25 @@ ol.bibliography {
   > li + li {
     margin-top: 0;
   }
+
+  // On small screens the picture floats at the start of the entry and the text runs around it.
+  > li {
+    display: flow-root;
+  }
+}
+
+.paper-figure {
+  float: left;
+  width: 4.5rem;
+  margin: 0.3rem var(--space-3) var(--space-1) 0;
+}
+
+.paper-figure img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-image);
 }
 
 @media (min-width: 58em) {
@@ -80,23 +100,39 @@ ol.bibliography {
     grid-column: 1 / -1;
   }
 
-  .publication-list {
-    display: grid;
-    grid-template-columns: var(--margin-col) minmax(0, var(--text-col));
-    column-gap: var(--gutter-col);
-    row-gap: var(--space-5);
-    align-items: baseline;
+  ol.bibliography {
+    margin-bottom: var(--space-5);
 
-    // Like a side head in a book, the year sits flush against the text it labels.
-    h2.bibliography {
-      grid-column: 1;
-      margin: 0;
-      text-align: right;
+    > li {
+      display: grid;
+      grid-template-columns: var(--margin-col) minmax(0, var(--text-col));
+      column-gap: var(--gutter-col);
+      align-items: start;
     }
 
-    ol.bibliography {
+    .paper {
       grid-column: 2;
     }
+  }
+
+  .publication-list > ol.bibliography:last-child {
+    margin-bottom: 0;
+  }
+
+  // On wide screens the picture stands in the margin column, flush against its paper.
+  .paper-figure {
+    float: none;
+    justify-self: end;
+    width: 7rem;
+    margin: 0;
+  }
+
+  // The year takes no height of its own: it sits on the margin axis, level with the first
+  // paper of its year, to the left of that paper's picture.
+  .publication-list h2.bibliography {
+    height: 0;
+    margin: 0;
+    overflow: visible;
   }
 }
 

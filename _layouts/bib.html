@@ -9,6 +9,11 @@
   {%- if key == month_key -%}{%- assign month_name = month_names[forloop.index0] -%}{%- endif -%}
 {%- endfor -%}
 {%- assign author_count = entry.author_array | size -%}
+{%- if paper.preview %}
+<a class="paper-figure" href="{{ paper.url | relative_url }}" tabindex="-1" aria-hidden="true">
+  {%- include figure.html path=paper.preview alt=paper.preview_alt sizes="(max-width: 928px) 94px, 119px" -%}
+</a>
+{%- endif %}
 <div class="paper" id="{{ entry.key }}" data-paper-subjects="{{ paper.subjects | map: 'id' | join: ' ' }}">
   <h3 class="paper-title">{% if paper %}<a href="{{ paper.url | relative_url }}">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}</h3>
   <p class="paper-authors">

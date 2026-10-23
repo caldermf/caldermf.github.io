@@ -10,6 +10,7 @@
 
   .portrait img {
     width: 100%;
+    border-radius: var(--radius-portrait);
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: 50% 30%;
