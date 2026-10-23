@@ -1,22 +1,34 @@
 ---
 layout: default
 ---
-<header class="page-header">
-  {% if page.collection == 'projects' -%}
-  <p class="back-link"><a class="plain" href="{{ '/projects/' | relative_url }}">All projects and notes</a></p>
+{% if page.collection == 'projects' -%}
+<p class="back-link"><a class="plain" href="{{ '/projects/' | relative_url }}">All projects and notes</a></p>
+<article class="spread">
+  {% if page.img -%}
+  <figure class="spread-figure">
+    {% include figure.html path=page.img alt=page.title sizes="(max-width: 928px) 170px, 272px" %}
+  </figure>
   {%- endif %}
+  <div class="spread-main">
+    <header class="page-header">
+      <h1>{{ page.title }}</h1>
+      {% if page.description != blank %}<p class="page-description">{{ page.description }}</p>{% endif %}
+    </header>
+    <div class="page-content">
+      {{ content }}
+    </div>
+  </div>
+</article>
+{%- else -%}
+<header class="page-header">
   <h1>{{ page.title }}</h1>
   {% if page.description != blank %}<p class="page-description">{{ page.description }}</p>{% endif %}
 </header>
 
 <article class="page-content">
-  {% if page.collection == 'projects' and page.img -%}
-  <figure class="margin-figure">
-    {% include figure.html path=page.img alt=page.title sizes="272px" %}
-  </figure>
-  {%- endif %}
   {{ content }}
 </article>
+{%- endif %}
 
 {%- if page.related_publications != null and page.related_publications.size > 0 -%}
 {% assign publications = page.related_publications | replace: ", ", "," | split: "," | join: "|" %}

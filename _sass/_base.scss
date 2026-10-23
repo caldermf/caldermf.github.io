@@ -125,13 +125,6 @@ b {
   font-weight: 600;
 }
 
-// Acronyms in running text are set in small caps so they don't shout.
-abbr {
-  font-variant-caps: all-small-caps;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-}
-
 hr {
   height: 0;
   margin: var(--space-5) 0;
@@ -173,8 +166,8 @@ button {
   color: inherit;
 }
 
-// Running prose is set like a book page: justified and hyphenated, paragraphs marked by an
-// indent rather than a blank line. Narrow screens rag better than they justify.
+// Running prose is set like a book page: justified and hyphenated, with a line space between
+// paragraphs (an indent or a space, never both). Narrow screens rag better than they justify.
 .prose {
   // Bringhurst's minimum: at least two letters before a break and three after it.
   hyphens: auto;
@@ -184,8 +177,9 @@ button {
     margin: 0;
   }
 
+  // Exactly one line of space, so every line stays on the same baseline rhythm.
   p + p {
-    text-indent: 1.5em;
+    margin-top: calc(var(--leading) * 1em);
   }
 }
 
