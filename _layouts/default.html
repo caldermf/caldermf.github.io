@@ -3,9 +3,6 @@
 
   <!-- Head -->
   <head>
-  {%- if page.redirect -%}
-    <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
-  {%- endif -%}
   {%- if page.redirect_to -%}
     <meta http-equiv="refresh" content="0; url={{ page.redirect_to | relative_url }}" />
   {%- endif -%}
@@ -28,9 +25,10 @@
     {%- include header.html %}
 
     <!-- Content -->
-    <div class="container mt-5">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content" class="container mt-5" tabindex="-1">
       {{ content }}
-    </div>
+    </main>
 
     <!-- Footer -->
     {%- include footer.html %}

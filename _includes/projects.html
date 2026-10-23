@@ -1,19 +1,16 @@
 <!-- _includes/projects.html -->
 <div class="grid-sizer"></div>
 <div class="grid-item">
-  {%- if project.redirect -%}
-    {%- assign primary_url = project.redirect -%}
-  {%- else -%}
-    {%- assign primary_url = project.url | relative_url -%}
-  {%- endif -%}
+  {%- assign primary_url = project.url | relative_url -%}
   <div class="card hoverable">
     {%- if project.img %}
     {%- include figure.html
       path=project.img
-      alt="project thumbnail" -%}
+      alt=project.title
+      sizes="(max-width: 575px) calc(100vw - 30px), 260px" -%}
     {%- endif %}
     <div class="card-body">
-      <h2 class="card-title text-lowercase">{{ project.title }}</h2>
+      <h3 class="card-title text-lowercase">{{ project.title }}</h3>
       <p class="card-text">{{ project.description }}</p>
       <div class="row ml-1 mr-1 p-0 project-links">
         {%- if project.github -%}

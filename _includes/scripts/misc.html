@@ -12,5 +12,8 @@
 {%- endif -%}
 
   <!-- Load Common JS -->
+  {% if page.selected_papers or page.url == '/publications/' %}
+  <script defer src="{{ '/assets/js/publication-filters.js' | relative_url | bust_file_cache }}"></script>
+  {% endif %}
   <script defer src="{{ '/assets/js/common.js' | relative_url | bust_file_cache }}"></script>
   <script defer src="{{ '/assets/js/copy_code.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>

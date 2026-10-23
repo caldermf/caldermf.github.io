@@ -1,14 +1,23 @@
+---
+layout: null
+permalink: /burnside-sampler/web/
+sitemap: true
+seo_enabled: true
+title: Burnside Process Sampler
+description: "Explore Burnside sampling on the symmetric group with an interactive browser visualizer by Calder Morton-Ferguson. Adjust the field characteristic and permutation."
+social_image: /assets/img/burnside.png
+social_image_alt: Burnside sampler visualization
+---
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Burnside Process Sampler</title>
+    {% include metadata.html %}
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
+        <p><a href="{{ '/projects/burnside-sampler/' | relative_url }}">About this research project</a></p>
         <h1>Burnside Sampler on the Symmetric Group</h1>
         <p class="lede">
           An interactive implementation of the sampling algorithm in <a class="lede" href="https://arxiv.org/abs/2510.02285">"Markov chains on Weyl groups from the geometry of the flag variety."</a> Adjust the field characteristic and starting element. By the results of our paper, choosing a large characteristic gives Steinberg cell clusters, while a small one gives near-uniform randomness!

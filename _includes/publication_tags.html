@@ -1,0 +1,5 @@
+{% if include.paper.subjects.size > 0 %}
+<div class="publication-tags" aria-label="Subjects">
+  {% for subject in include.paper.subjects %}<span>{{ subject.label | escape }}</span>{% endfor %}
+</div>
+{% endif %}

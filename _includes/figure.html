@@ -1,35 +1,32 @@
-{%- assign img_path = include.path | remove: ".jpg" | remove: ".jpeg" | remove: ".png" | remove: ".tiff" -%}
-
+{%- assign img_path = include.path | remove: '.jpg' | remove: '.jpeg' | remove: '.png' | remove: '.tiff' -%}
+{%- assign dimensions = include.path | image_dimensions -%}
 <figure>
-
   <picture>
-    {% if site.imagemagick.enabled %}
-    {% for i in site.imagemagick.widths -%}
-      <source
-        class="responsive-img-srcset"
-        media="(max-width: {{ i }}px)"
-        srcset="{{ img_path | relative_url }}-{{ i }}.webp"
-      />
-    {% endfor -%}
+    {% if site.imagemagick.enabled and dimensions %}
+    {%- capture image_srcset -%}
+      {%- assign previous_width = 0 -%}
+      {%- for width in site.imagemagick.widths -%}
+        {%- assign actual_width = width | at_most: dimensions[0] -%}
+        {%- if actual_width > previous_width -%}
+          {%- if previous_width > 0 -%}, {% endif -%}
+          {{- img_path | relative_url -}}-{{ width }}.webp {{ actual_width }}w
+          {%- assign previous_width = actual_width -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    <source type="image/webp"
+      srcset="{{ image_srcset }}"
+      sizes="{{ include.sizes | default: '(max-width: 575px) calc(100vw - 30px), 800px' }}">
     {% endif %}
-
-    <!-- Fallback to the original file -->
     <img
       src="{% if include.cache_bust %}{{ include.path | relative_url | bust_file_cache }}{% else %}{{ include.path | relative_url }}{% endif %}"
       {% if include.class %}class="{{ include.class }}"{% endif %}
-      {% if include.width %}width="{{ include.width }}"{% else %}width="auto"{% endif %}
-      {% if include.height %}height="{{ include.height }}"{% else %}height="auto"{% endif %}
-      {% if include.min-width %}min-width="{{ include.min-width }}"{% endif %}
-      {% if include.min-height %}min-height="{{ include.min-height }}"{% endif %}
-      {% if include.max-width %}max-width="{{ include.max-width }}"{% endif %}
-      {% if include.max-height %}max-height="{{ include.max-height }}"{% endif %}
-      {% if include.alt %}alt="{{ include.alt }}"{% endif %}
-      {% if include.title %}title="{{ include.title }}"{% endif %}
-      {% if include.zoomable %}data-zoomable{% endif %}
-      onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-    />
+      {% if dimensions %}width="{{ dimensions[0] }}" height="{{ dimensions[1] }}"{% endif %}
+      alt="{{ include.alt | default: '' | escape }}"
+      {% if include.title %}title="{{ include.title | escape }}"{% endif %}
+      loading="{{ include.loading | default: 'lazy' }}" decoding="async"
+      {% if include.fetchpriority %}fetchpriority="{{ include.fetchpriority }}"{% endif %}
+      {% if include.zoomable %}data-zoomable{% endif %}>
   </picture>
-
-  {%- if include.caption -%}<figcaption class="caption">{{ include.caption }}</figcaption>{%- endif %}
-
+  {% if include.caption %}<figcaption class="caption">{{ include.caption }}</figcaption>{% endif %}
 </figure>

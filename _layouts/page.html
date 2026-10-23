@@ -10,6 +10,7 @@ layout: default
           </header>
 
           <article>
+            {% if page.collection == 'projects' %}<p><a href="{{ '/projects/' | relative_url }}">All notes and projects</a></p>{% endif %}
             {{ content }}
           </article>
 

@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<article class="publication-detail">
+  <p class="publication-back"><a href="{{ '/publications/' | relative_url }}">All publications</a></p>
+  <header>
+    <h1>{{ page.paper.title | escape }}</h1>
+    <p class="publication-authors">{{ page.paper.authors | join: ', ' | escape }}</p>
+    {% if page.paper.arxiv_date != empty %}
+    <p class="publication-date">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv: <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>
+    {% endif %}
+    {% if page.paper.journal %}<p>{{ page.paper.publication_details | escape }}.</p>{% endif %}
+  </header>
+  {% include publication_tags.html paper=page.paper %}
+  <nav class="publication-links" aria-label="Paper resources">
+    <a href="{{ page.paper.arxiv_url }}">{% if page.paper.is_appendix %}Full paper on {% endif %}arXiv</a>
+    <a href="{{ page.paper.pdf_url }}">Read PDF</a>
+    {% if page.paper.publisher_url %}<a href="{{ page.paper.publisher_url | escape }}">Journal version</a>{% endif %}
+    {% if page.paper.code_url %}<a href="{{ page.paper.code_url }}">Source code</a>{% endif %}
+  </nav>
+  {% if page.paper.preview %}
+  <div class="publication-figure">
+    {% include figure.html path=page.paper.preview alt=page.paper.preview_alt zoomable=true sizes="180px" %}
+  </div>
+  {% endif %}
+  {% if page.paper.abstract != empty %}
+  <section aria-labelledby="abstract-title">
+    <h2 id="abstract-title">Abstract</h2>
+    <p>{{ page.paper.abstract | escape }}</p>
+  </section>
+  {% else %}
+  <p>This contribution is an appendix to the paper linked above. The full text is available in that paper.</p>
+  {% endif %}
+</article>

@@ -34,6 +34,8 @@ jobs:
         sudo apt-get install -y imagemagick
         export JEKYLL_ENV=production
         bundle exec jekyll build
+    - name: Check metadata, research data, and internal links
+      run: bundle exec ruby bin/check-seo _site
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
       uses: JamesIves/github-pages-deploy-action@v4

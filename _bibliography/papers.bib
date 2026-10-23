@@ -1,4 +1,5 @@
 @misc{reapo,
+      subjects={machine-learning},
       title={{ReAPO}: Retry-Aware Policy Optimization for Efficient Exploration in {LLM} Reasoning},
       author={Nghi Dao and Calder Morton-Ferguson and Noah Golowich and Adam Block},
       year={2026},
@@ -6,6 +7,7 @@
       abstract={RLVR improves language-model reasoning, but commonly relies on independent stochastic rollouts for exploration, which can repeatedly sample similar failed strategies. Prior work has seen success with approaches that guide exploration by introducing dependence into the sampling process by including incorrect solutions in the context for subsequent attempts. Still, these methods introduce the additional question of how to assign credit to each attempt. We propose to view the credit assignment through the lens of Stochastic Shortest Paths, a framework in classical reinforcement learning that seeks to minimize the expected cumulative cost to reach a terminal state (in our case, a verified successful response). We show that, under suitable simplifying assumptions, this perspective naturally leads to a simple modification to GRPO, which we call Retry-Aware Policy Optimization (ReAPO). ReAPO allocates additional generation to failed trajectories, allowing successful retries to be reinforced without rewarding preceding failures, and assigns credit in a theoretically principled way to each attempt. Across Qwen3 and OLMo-2 models from 0.6B to 4B and eight mathematical and scientific reasoning benchmarks, ReAPO improves first-attempt performance over GRPO as well as natural recent baseline algorithms, while additional ablations demonstrate the utility of both serial sampling and ReAPO's credit assignment. On Qwen3-0.6B, ReAPO also outperforms GRPO with twice the group size or twice the training steps, reaching their peak accuracy with 39\% and 31\% fewer generated tokens, respectively. Taken together, our results suggest that ReAPO is a simple yet effective approach for improving LM reasoning performance through improved exploration and retry-aware credit assignment.},
       archivePrefix={arXiv},
       arxiv={2610.28770v1},
+      arxiv_date={2026-10-20},
       primaryClass={cs.LG},
       pdf={https://arxiv.org/pdf/2610.28770v1},
       preview={reapo.png},
@@ -14,6 +16,7 @@
 }
 
 @misc{baroperation,
+      subjects={representation-theory, combinatorics, algebraic-geometry},
       title={A bar operation on the double affine {Hecke} algebra},
       author={Dougal Davis and Ivan Losev and Calder Morton-Ferguson},
       year={2026},
@@ -21,6 +24,7 @@
       abstract={We construct a bar-type operation for the affine Hecke algebra $\mathcal{H}_{W}^a$ attached to a symmetrizable Kac--Moody group. Our main tool is a geometric bimodule defined using the equivariant $K$-theory of a suitable version of the Steinberg variety for this Kac--Moody group. Using elements of this bimodule corresponding to standard and costandard Hodge $D$-modules on the Kashiwara flag variety, we define a bar involution on $\mathcal{H}_{W}^a$ by relating the left and right actions of $\mathcal{H}_{W}^a$ on this bimodule. A central issue is that the resulting formulas for the bar operation do not preserve the algebra itself and naturally produce infinite expansions. To address this, we introduce certain completions of $\mathcal{H}_{W}^a$ on which the bar operation is well-defined. For this construction, we prove a number of combinatorial finiteness results for products in $\mathcal{H}_{W}^a$. In affine type, we further analyze the level-zero part of the algebra and obtain an explicit combinatorial formula for a bar operation on a suitable localization of Cherednik's double affine Hecke algebra. In this case the bar operation itself is not an involution but we also show that this bar operation becomes an involution when the lattice parameter $q$ is set to $1$.},
       archivePrefix={arXiv},
       arxiv={2609.23866},
+      arxiv_date={2026-09-20},
       primaryClass={math.RT},
       pdf={https://arxiv.org/pdf/2609.23866},
       preview={daha.png},
@@ -29,6 +33,7 @@
 }
 
 @misc{weightmodules,
+      subjects={representation-theory, algebraic-geometry},
       title={Weight modules and gluing of sheaves on the flag variety}, 
       author={Pablo Boixeda Alvarez and Calder Morton-Ferguson},
       year={2025},
@@ -36,20 +41,23 @@ month=sep,
 abstract={We study a natural enlargement of the BGG Category O for a semisimple Lie algebra: the category of weight modules with trivial central character and finite-dimensional weight spaces supported on the root lattice. We give a geometric realization of this category as unipotently monodromic sheaves on the flag variety satisfying a singular support condition. We then explain that a derived version D of this category is Koszul dual to the Kazhdan--Laumon Category O, a different enlargement of the BGG Category O obtained from a gluing construction for sheaves on the flag variety. This characterizes D as the category of algebras over a natural monad on a direct sum of copies of the derived Category O. These results give new interpretations of certain classical algebraic constructions of weight modules over semisimple Lie algebras due to Fernando and Mathieu. We also conjecture that our results fit naturally into a proposed Koszul duality relating the small quantum group and the semi-infinite flag variety to the geometry of affine Springer fibers.},
 archivePrefix={arXiv},
 arxiv={2509.25156},
+      arxiv_date={2025-09-29},
 primaryClass={math.RT},
 preview={weights.png},
 selected={true}
 }
 
 @misc{markovchains,
+      subjects={combinatorics, probability-statistics, algebraic-geometry},
       title={Markov chains on Weyl groups from the geometry of the flag variety
 }, 
       author={Persi Diaconis and Calder Morton-Ferguson},
       year={2025},
-month=sep,
+month=oct,
 abstract={This paper studies a basic Markov chain, the Burnside process, on the space of flags G/B with G=GL_n(F_q) and B its upper triangular matrices. This gives rise to a shuffling: a Markov chain on the symmetric group realized via the Bruhat decomposition. Actually running and describing this Markov chain requires understanding Springer fibers and the Steinberg variety. The main results give a practical algorithm for all n and q and determine the limiting behavior of the chain when q is large. In describing this behavior, we find interesting connections to the combinatorics of the Robinson-Schensted correspondence and to the geometry of orbital varieties. The construction and description is then carried over to finite Chevalley groups of arbitrary type, describing a new class of Markov chains on Weyl groups.},
 archivePrefix={arXiv},
 arxiv={2510.02285},
+      arxiv_date={2025-10-02},
 primaryClass={math.PR},
 github={https://github.com/caldermf/burnside-sampler},
 preview={tableaux.png},
@@ -57,6 +65,7 @@ selected={true}
 }
 
 @misc{modular,
+      subjects={representation-theory, algebraic-geometry},
       title={Modular reduction of complex representations of finite reductive groups}, 
       author={Roman Bezrukavnikov and Michael Finkelberg and David Kazhdan and Calder Morton-Ferguson},
       year={2025},
@@ -64,6 +73,7 @@ month=feb,
 abstract={Given a complex representation of a finite group, Brauer and Nesbitt defined in 1941 its reduction mod p, obtaining a representation over the algebraic closure of 𝔽_p. In 2021, Lusztig studied the characters obtained by reducing mod p an irreducible unipotent representation of a finite reductive group over 𝔽_p. He gave a conjectural formula for this character as a linear combination of terms which had no explicit definition and were only known in some small-rank examples. In this paper we provide an explicit formula for these terms and prove Lusztig's conjecture, giving a formula for the reduction mod p of any unipotent representation of G(𝔽_q) for q a power of p. We also propose a conjecture linking this construction to the full exceptional collection in the derived category of coherent sheaves on a partial flag variety constructed recently by Samokhin and van der Kallen.},
 archivePrefix={arXiv},
 arxiv={2502.09605},
+      arxiv_date={2025-02-13},
 primaryClass={math.RT},
 github={https://github.com/caldermf/modular-reduction},
 preview={weyl.png},
@@ -71,6 +81,7 @@ selected={true}
 }
 
 @misc{thinthick,
+      subjects={representation-theory, algebraic-geometry},
       title={Perverse sheaves and t-structures on the thin and thick affine flag varieties}, 
       author={Roman Bezrukavnikov and Calder Morton-Ferguson},
       year={2024},
@@ -78,6 +89,7 @@ month=sep,
 abstract={We study the categories of Iwahori-equivariant perverse sheaves on the thin and thick affine flag varieties associated to a split reductive group G. An earlier work of the first author describes perverse sheaves on the thin flag variety in terms of bimodules over the so-called non-commutative Springer resolution. We partly extend this result to the thick flag variety, providing a similar description for its anti-spherical quotient. The long intertwining functor realizes sheaves on the thick flag variety as the Ringel dual of the category of sheaves on the thick flag variety, we point out that it shares some exactness properties with the similar functor acting on perverse sheaves on the finite-dimensional flag variety. We use this result to resolve a conjecture of Arkhipov and the first author, proving that the image in the Iwahori-Whittaker category of any convolution-exact perverse sheaf on the affine flag variety is tilting.},
 archivePrefix={arXiv},
 arxiv={2409.16259},
+      arxiv_date={2024-09-24},
 primaryClass={math.RT},
 preview={twosided-cells.png},
 selected={true}
@@ -85,6 +97,7 @@ selected={true}
 
 
 @article{CMFRationality,
+      subjects={representation-theory, algebraic-geometry},
       title={Polishchuk's conjecture and Kazhdan-Laumon representations}, 
       author={Calder Morton-Ferguson},
       abbr={Compositio Math.},
@@ -99,6 +112,7 @@ selected={true}
       abstract={In their 1988 paper "Gluing of perverse sheaves and discrete series representations," D. Kazhdan and G. Laumon constructed an abelian category A associated to a reductive group G over a finite field with the aim of using it to construct discrete series representations of the finite Chevalley group G(F_q). The well-definedness of their construction depended on their conjecture that this category has finite cohomological dimension. This was disproven by R. Bezrukavnikov and A. Polishchuk in 2001, who found a counterexample in the case G = SL_3. In the same paper, Polishchuk then made an alternative conjecture: though this counterexample shows that the Grothendieck group K_0(A)$ is not spanned by objects of finite projective dimension, he noted that a graded version of K_0(A) can be thought of as a module over Laurent polynomials and conjectured that a certain localization of this module is generated by objects of finite projective dimension, and suggested that this conjecture could lead toward a proof that Kazhdan and Laumon's construction is well-defined. He proved this conjecture in Types A_1, A_2, A_3, and B_2. In the present paper, we prove Polishchuk's conjecture in full generality, and go on to prove that Kazhdan and Laumon's construction is indeed well-defined, giving a new geometric construction of discrete series representations of G(F_q).},
       archivePrefix={arXiv},
       arxiv={2309.13462},
+      arxiv_date={2023-09-23},
       primaryClass={math.RT},
       html = {https://www.cambridge.org/core/journals/compositio-mathematica/article/polishchuks-conjecture-and-kazhdanlaumon-representations/8D1622338AC6A133A3FC2F28514A9F42},
       pdf = {https://www.cambridge.org/core/services/aop-cambridge-core/content/view/8D1622338AC6A133A3FC2F28514A9F42/S0010437X25007043a.pdf/polishchuks-conjecture-and-kazhdan-laumon-representations.pdf},
@@ -107,6 +121,7 @@ selected={true}
 }
 
 @article{CMFSymplectic,
+      subjects={representation-theory, combinatorics, algebraic-geometry},
     author = {Morton-Ferguson, Calder},
     title = "{Symplectic Fourier–Deligne Transforms on G/U and the Algebra of Braids and Ties}",
     journal = {International Mathematics Research Notices},
@@ -119,6 +134,7 @@ selected={true}
     url = {https://doi.org/10.1093/imrn/rnae052},
 html={https://academic.oup.com/imrn/advance-article/doi/10.1093/imrn/rnae052/7643966},
 arxiv={2304.01998},
+      arxiv_date={2023-04-04},
       archivePrefix={arXiv},
     eprint = {https://academic.oup.com/imrn/advance-article-pdf/doi/10.1093/imrn/rnae052/57214174/rnae052.pdf},
 pdf = {https://academic.oup.com/imrn/advance-article-pdf/doi/10.1093/imrn/rnae052/57214174/rnae052.pdf},
@@ -127,6 +143,7 @@ selected={true}
 }
 
 @article {CMFCatO,
+      subjects={representation-theory, algebraic-geometry},
     AUTHOR = {Morton-Ferguson, Calder},
      TITLE = {Kazhdan-{L}aumon category {O}, {B}raverman-{K}azhdan
               {S}chwartz space, and the semi-infinite flag variety},
@@ -148,11 +165,13 @@ abstract={We define and study an analogue of Category O in the context of Kazhda
       archivePrefix={arXiv},
 	html = {https://www.ams.org/journals/ert/2025-29-01/S1088-4165-2025-00684-0/?active=current},
 pdf = {https://www.ams.org/journals/ert/2025-29-01/S1088-4165-2025-00684-0/S1088-4165-2025-00684-0.pdf},
-      arxiv={2210.03101}
+      arxiv={2210.03101},
+      arxiv_date={2022-10-06}
 }
 
 
 @article{DEKM,
+      subjects={representation-theory, combinatorics, algebraic-geometry},
 	abstract = {Fix a simply-laced semisimple Lie algebra. We study the crystal B(nλ), were λ is a dominant minuscule weight and n is a natural number. On one hand, B(nλ) can be realized combinatorially by height n reverse plane partitions on a heap associated to λ. On the other hand, we use this heap to define a module over the preprojective algebra of the underlying Dynkin quiver. Using the work of Saito and Savage-Tingley, we realize B(nλ) via irreducible components of the quiver Grassmannian of n copies of this module. In this paper, we describe an explicit bijection between these two models for B(nλ) and prove that our bijection yields an isomorphism of crystals. Our main geometric tool is Nakajima's tensor product quiver varieties.},
 	author = {Dranowski, Anne and Elek, Bal{\'a}zs and Kamnitzer, Joel and Morton-Ferguson, Calder},
 month={10},
@@ -171,6 +190,7 @@ pdf={https://link.springer.com/content/pdf/10.1007/s00029-024-00978-8.pdf},
 	url = {https://doi.org/10.1007/s00029-024-00978-8},
 	volume = {30},
       arxiv={2202.02490},
+      arxiv_date={2022-02-05},
       archivePrefix={arXiv},
       primaryClass={math.RT},
 preview={heap.png},
@@ -179,6 +199,7 @@ selected={true},
 	bdsk-url-1 = {https://doi.org/10.1007/s00029-024-00978-8}}
 
 @article {Appendix,
+      subjects={representation-theory, algebraic-geometry},
     AUTHOR = {Dranowski, Anne and Kamnitzer, Joel and Morton-Ferguson, Calder},
      TITLE = {Appendix to "The {M}irkovi\'{c}-{V}ilonen basis and {D}uistermaat-{H}eckman
               measures"},
@@ -196,6 +217,7 @@ MRREVIEWER = {Jacinta\ Torres},
        URL = {https://doi.org/10.4310/ACTA.2021.v227.n1.a1},
 preview={preproj.png},
 arxiv={1905.08460},
+      arxiv_date={2019-05-21},
 pdf={https://projecteuclid.org/journalArticle/Download?urlId=10.4310%2FACTA.2021.v227.n1.a1},
 html={https://projecteuclid.org/journals/acta-mathematica/volume-227/issue-1/The-Mirkovi%c4%87Vilonen-basis-and-DuistermaatHeckman-measures/10.4310/ACTA.2021.v227.n1.a1.full},
 selected={true}

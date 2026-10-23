@@ -1,0 +1,9 @@
+<div class="publication-filters" hidden>
+  <div class="publication-filter-options" role="group" aria-label="Filter papers by subject">
+    <button type="button" data-subject="all" aria-pressed="true">All</button>
+    {% for subject in site.data.publication_subjects %}
+    <button type="button" data-subject="{{ subject.id }}" aria-pressed="false">{{ subject.label | escape }}</button>
+    {% endfor %}
+  </div>
+  <p class="publication-filter-status sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>

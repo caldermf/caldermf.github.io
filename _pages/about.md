@@ -6,7 +6,7 @@ subtitle:
 
 profile:
   align: right
-  image: me.jpg
+  image: profile.jpg
   image_circular: false # crops the image to make it circular
   address: >
     <p>calder dot morton dot ferguson at gmail dot com</p>

@@ -3,6 +3,8 @@ layout: page
 permalink: /teaching/
 title: teaching
 description: 
+seo_title: "Mathematics Teaching | Calder Morton-Ferguson"
+seo_description: "Calder Morton-Ferguson's mathematics teaching at Yale, Stanford, MIT, and the University of Toronto, including algebra, geometry, calculus, and analysis."
 nav: true
 nav_order: 5
 ---

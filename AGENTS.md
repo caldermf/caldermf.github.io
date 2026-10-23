@@ -16,3 +16,4 @@ This is Calder's personal repository, not a Healthier business repository.
 - `./bin/build` builds the production site; `./bin/stop` stops the preview.
 - Keep `Gemfile.lock` tracked. GitHub Actions deploys pushes to `main` or `master`.
 - Preserve personal content, research notebooks, and the theme's `LICENSE` when cleaning up template files.
+- After SEO or research-data changes, run a production build and `bundle exec ruby bin/check-seo _site` in Docker. See `docs/search-and-research-data.md` for metadata sources and generated outputs.

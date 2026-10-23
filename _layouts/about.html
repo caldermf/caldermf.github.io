@@ -26,7 +26,10 @@ layout: default
               {% include figure.html
               path=profile_image_path
               class=profile_image_class
-              alt=page.profile.image
+              alt="Calder Morton-Ferguson"
+              loading="eager"
+              fetchpriority="high"
+              sizes="(max-width: 575px) calc(100vw - 30px), 240px"
               cache_bust=true -%}
             {% endif -%}
             {%- if page.profile.address %}
@@ -34,6 +37,22 @@ layout: default
               {{ page.profile.address }}
             </div>
             {%- endif %}
+
+          <!-- Social -->
+          {%- if page.social %}
+            <div class="profile-social">
+              <nav class="contact-icons" aria-label="Research and social profiles">
+                {% include social.html %}
+              </nav>
+
+              {% if site.contact_note %}
+              <div class="contact-note">
+                {{ site.contact_note }}
+              </div>
+              {% endif %}
+
+            </div>
+          {%- endif %}
           </div>
           {%- endif %}
 
@@ -45,20 +64,6 @@ layout: default
           {% if page.selected_papers -%}
             <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">publications</a></h2>
             {%- include selected_papers.html %}
-          {%- endif %}
-
-          <!-- Social -->
-          {%- if page.social %}
-            <div class="social">
-              <div class="contact-icons">
-                {% include social.html %}
-              </div>
-
-              <div class="contact-note">
-                {{ site.contact_note }}
-              </div>
-
-            </div>
           {%- endif %}
         </article>
 

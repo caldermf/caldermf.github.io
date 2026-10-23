@@ -1,25 +1,46 @@
-    <!-- Standard metadata -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-    {%- if site.title == "blank" -%}
-        {%- capture title -%}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{%- endcapture -%}
-    {%- else -%}
-        {%- capture title -%}{{ site.title }}{%- endcapture -%}
-    {%- endif -%}
-    {% if page.title != "blank" and page.url != "/" -%}
-        {%- if page.title == nil or page.title == "" -%}
-            {{ page.date | date: "%Y" }} | {{ title }}
-        {%- else -%}
-            {{ page.title }} | {{ title }}
-        {%- endif -%}
-    {%- else -%}
-        {{ title }}
-    {%- endif -%}
-    </title>
-    <meta name="author" content="{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}" />
-    <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
-{%- if page.keywords or site.keywords %}
-    <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords }}{%- else -%}{{ site.keywords }}{%- endif -%}" />
-{%- endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.seo.title | escape }}</title>
+    <meta name="author" content="Calder Morton-Ferguson">
+    <meta name="description" content="{{ page.seo.description | escape }}">
+    <meta name="robots" content="{% if page.noindex %}noindex, follow{% else %}index, follow, max-image-preview:large{% endif %}">
+    <link rel="canonical" href="{{ page.seo.canonical | escape }}">
+    <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}">
+
+    <meta property="og:site_name" content="Calder Morton-Ferguson">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="{% if page.paper %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{{ page.seo.title | escape }}">
+    <meta property="og:description" content="{{ page.seo.description | escape }}">
+    <meta property="og:url" content="{{ page.seo.canonical | escape }}">
+    <meta property="og:image" content="{{ page.seo.image | escape }}">
+    <meta property="og:image:alt" content="{{ page.seo.image_alt | escape }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page.seo.title | escape }}">
+    <meta name="twitter:description" content="{{ page.seo.description | escape }}">
+    <meta name="twitter:image" content="{{ page.seo.image | escape }}">
+    <meta name="twitter:image:alt" content="{{ page.seo.image_alt | escape }}">
+    {% if page.url == '/' %}
+    <link rel="alternate" type="application/ld+json" href="{{ '/profile.json' | absolute_url }}" title="Researcher profile">
+    {% endif %}
+    {% if page.url == '/' or page.url == '/publications/' %}
+    <link rel="alternate" type="application/json" href="{{ '/publications.json' | absolute_url }}" title="Publication data">
+    <link rel="alternate" type="text/markdown" href="{{ '/publications.md' | absolute_url }}" title="Publications in Markdown">
+    {% endif %}
+    {% if page.paper and page.paper.is_appendix != true %}
+    <meta name="citation_title" content="{{ page.paper.title | escape }}">
+    {% for author in page.paper.authors %}<meta name="citation_author" content="{{ author | escape }}">
+    {% endfor %}
+    <meta name="citation_publication_date" content="{{ page.paper.citation_year }}">
+    <meta name="citation_online_date" content="{{ page.paper.arxiv_date | replace: '-', '/' }}">
+    <meta name="citation_abstract_html_url" content="{{ page.seo.canonical | escape }}">
+    {% if page.paper.journal %}<meta name="citation_journal_title" content="{{ page.paper.journal | escape }}">{% endif %}
+    {% if page.paper.doi %}<meta name="citation_doi" content="{{ page.paper.doi | escape }}">{% endif %}
+    {% if page.paper.volume %}<meta name="citation_volume" content="{{ page.paper.volume | escape }}">{% endif %}
+    {% if page.paper.issue %}<meta name="citation_issue" content="{{ page.paper.issue | escape }}">{% endif %}
+    {% if page.paper.first_page %}<meta name="citation_firstpage" content="{{ page.paper.first_page | escape }}">{% endif %}
+    {% if page.paper.last_page %}<meta name="citation_lastpage" content="{{ page.paper.last_page | escape }}">{% endif %}
+    {% endif %}
+    {% if page.structured_data %}
+    <script type="application/ld+json">{{ page.structured_data | safe_json }}</script>
+    {% endif %}

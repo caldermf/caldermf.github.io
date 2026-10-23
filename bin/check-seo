@@ -1,0 +1,153 @@
+#!/usr/bin/env ruby
+require 'nokogiri'
+require 'json'
+require 'uri'
+require 'pathname'
+require 'bibtex'
+require 'open3'
+
+root = Pathname.new(ARGV.fetch(0, '_site')).expand_path
+origin = ARGV.fetch(1, 'https://caldermf.github.io')
+errors = []
+checked_images = {}
+check = ->(condition, message) { errors << message unless condition }
+html_files = root.glob('**/*.html')
+indexed = []
+metadata_pages = []
+canonical_urls = []
+
+resolve = lambda do |path|
+  clean = URI::DEFAULT_PARSER.unescape(path).sub(%r{\A/}, '')
+  file = root.join(clean)
+  file = file.join('index.html') if file.directory? || clean.end_with?('/') || clean.empty?
+  file
+end
+
+html_files.each do |file|
+  relative = file.relative_path_from(root).to_s
+  doc = Nokogiri::HTML(file.read)
+  canonical = doc.at_css('link[rel="canonical"]')&.[]('href')
+  next unless canonical
+  noindex = doc.at_css('meta[name="robots"]')&.[]('content').to_s.include?('noindex')
+  check.call(canonical.start_with?(origin + '/'), "#{relative}: canonical has wrong origin")
+  check.call(doc.css('link[rel="canonical"]').size == 1, "#{relative}: duplicate canonical")
+  check.call(!doc.at_css('title')&.text.to_s.strip.empty?, "#{relative}: empty title")
+  unless noindex
+    indexed << canonical
+    check.call(doc.css('h1').size == 1, "#{relative}: expected one H1")
+    check.call(doc.css('main').size == 1, "#{relative}: expected one main landmark")
+    check.call(!doc.at_css('meta[name="description"]')&.[]('content').to_s.strip.empty?, "#{relative}: empty description")
+  end
+  if doc.at_css('meta[property="og:title"]')
+    metadata_pages << doc
+    canonical_urls << canonical unless noindex
+    %w[og:title og:description og:url og:image og:image:alt].each do |property|
+      check.call(!doc.at_css("meta[property='#{property}']")&.[]('content').to_s.empty?, "#{relative}: missing #{property}")
+    end
+    check.call(doc.at_css('meta[property="og:url"]')['content'] == canonical, "#{relative}: OG URL differs from canonical")
+    image = doc.at_css('meta[property="og:image"]')['content']
+    check.call(image.start_with?(origin + '/') && resolve.call(URI(image).path).file?, "#{relative}: missing sharing image")
+    check.call(!doc.at_css('meta[name="keywords"]'), "#{relative}: obsolete keyword tag")
+    unless noindex
+      blocks = doc.css('script[type="application/ld+json"]')
+      check.call(blocks.size == 1, "#{relative}: missing or duplicate JSON-LD")
+      blocks.each do |block|
+        begin
+          data = JSON.parse(block.text)
+          check.call(data['@context'] == 'https://schema.org', "#{relative}: invalid JSON-LD context")
+          check.call(data['@graph'].any? { |node| node['@type'] == 'Person' && node['name'] == 'Calder Morton-Ferguson' }, "#{relative}: missing researcher identity")
+          check.call(!block.text.include?('gmail.com'), "#{relative}: email leaked into structured data")
+        rescue JSON::ParserError => e
+          errors << "#{relative}: malformed JSON-LD: #{e.message}"
+        end
+      end
+    end
+  end
+  # Validate crawlable local references, including responsive images and fragments.
+  doc.css('[href], img[src], script[src], source[srcset]').each do |node|
+    targets = [node['href'], node['src']].compact
+    targets += node['srcset'].split(',').map { |candidate| candidate.strip.split.first } if node['srcset']
+    targets.each do |target|
+      next if target.empty? || target.start_with?('data:', 'mailto:', 'javascript:')
+      begin
+        uri = URI.join(origin + '/' + relative, target)
+        next unless uri.host == URI(origin).host
+        path = resolve.call(uri.path)
+        check.call(path.file?, "#{relative}: broken local reference #{target}")
+        if path.file? && !uri.fragment.to_s.empty? && path.extname == '.html'
+          target_doc = path == file ? doc : Nokogiri::HTML(path.read)
+          fragment = URI::DEFAULT_PARSER.unescape(uri.fragment)
+          check.call(target_doc.xpath('//*[@id or @name]').any? { |element| element['id'] == fragment || element['name'] == fragment }, "#{relative}: missing fragment #{target}")
+        end
+      rescue URI::InvalidURIError
+        errors << "#{relative}: invalid URL #{target}"
+      end
+    end
+  end
+  doc.css('picture img').each do |img|
+    check.call(img['width'].to_i > 0 && img['height'].to_i > 0, "#{relative}: image has no intrinsic dimensions")
+    check.call(!img['alt'].to_s.strip.empty?, "#{relative}: missing image alt text")
+  end
+  doc.css('source[srcset]').each do |source|
+    widths = []
+    source['srcset'].split(',').each do |candidate|
+      target, descriptor = candidate.strip.split
+      next unless descriptor&.end_with?('w')
+      width = descriptor.to_i
+      widths << width
+      image_path = resolve.call(URI.join(origin + '/' + relative, target).path)
+      next unless image_path.file?
+      actual = checked_images[image_path] ||= Open3.capture2('identify', '-format', '%w', image_path.to_s).first.to_i
+      check.call(actual == width, "#{relative}: #{target} claims #{width}px but is #{actual}px")
+    end
+    check.call(widths.uniq.size == widths.size, "#{relative}: duplicate srcset width descriptors")
+  end
+end
+
+check.call(canonical_urls.uniq.size == canonical_urls.size, 'Duplicate canonical URLs across indexable pages')
+titles = metadata_pages.reject { |doc| doc.at_css('meta[name="robots"]')['content'].include?('noindex') }.map { |doc| doc.at_css('title').text.strip }
+check.call(titles.uniq.size == titles.size, 'Duplicate page titles')
+sitemap = Nokogiri::XML(root.join('sitemap.xml').read)
+check.call(sitemap.errors.empty?, 'Sitemap is not well-formed XML')
+locations = sitemap.xpath('//*[local-name()="loc"]').map(&:text)
+check.call(locations.uniq.size == locations.size, 'Duplicate sitemap entries')
+check.call(locations.sort == indexed.uniq.sort, "Sitemap/indexable page mismatch: #{(locations - indexed) + (indexed - locations)}")
+check.call(sitemap.xpath('//*[local-name()="lastmod"]').empty?, 'Unexpected build-time lastmod dates')
+check.call(root.join('robots.txt').read.include?("Sitemap: #{origin}/sitemap.xml"), 'Wrong robots sitemap origin')
+
+papers = JSON.parse(root.join('publications.json').read)['publications']
+bibliography = BibTeX.open(File.expand_path('../_bibliography/papers.bib', __dir__)).entries
+check.call(papers.size == bibliography.size, 'Publication export count differs from the bibliography')
+check.call(papers.map { |p| p['arxiv_date'] } == papers.map { |p| p['arxiv_date'] }.sort.reverse, 'Publication export is not ordered by original arXiv date')
+papers.each do |paper|
+  doc = Nokogiri::HTML(resolve.call(URI(paper['url']).path).read)
+  check.call(paper['citation_year'] == bibliography[paper['key']][:year].to_s, "#{paper['key']}: source publication year changed in export")
+  check.call(doc.at_css('h1').text == paper['title'], "#{paper['key']}: title mismatch")
+  unless paper['is_appendix']
+    check.call(doc.css('meta[name="citation_author"]').map { |m| m['content'] } == paper['authors'], "#{paper['key']}: citation author mismatch")
+    check.call(doc.at_css('meta[name="citation_publication_date"]')['content'] == paper['citation_year'], "#{paper['key']}: journal year overwritten")
+    check.call(doc.at_css('meta[name="citation_online_date"]')['content'] == paper['arxiv_date'].tr('-', '/'), "#{paper['key']}: first posting date mismatch")
+  end
+end
+profile = JSON.parse(root.join('profile.json').read)
+check.call(profile['sameAs'].size == 4 && !profile.key?('email'), 'Profile links or email privacy regressed')
+check.call(root.join('llms.txt').read.start_with?('# Calder Morton-Ferguson'), 'Missing plain-text agent index')
+check.call(root.join('publications.md').read.start_with?('# Publications by'), 'Markdown export was converted to HTML')
+check.call(BibTeX.parse(root.join('publications.bib').read).entries.size == papers.size, 'BibTeX export count mismatch')
+home = Nokogiri::HTML(root.join('index.html').read)
+check.call(home.css('.profile .profile-social a').size == 4, 'Social links moved away from the profile')
+check.call(home.css('a[href^="mailto:"]').empty?, 'Email links reintroduced')
+check.call(home.at_css('.profile img')['loading'] == 'eager', 'Portrait should load eagerly')
+expected_groups = papers.group_by { |p| p['arxiv_date'][0, 4] }.transform_values { |entries| entries.map { |p| p['key'] } }
+['index.html', 'publications/index.html'].each do |path|
+  doc = Nokogiri::HTML(root.join(path).read)
+  groups = doc.css('h2.bibliography').to_h do |heading|
+    list = heading.next_element
+    [heading.text.strip, list.css('div[id]').map { |element| element['id'] }.select { |key| bibliography.key?(key) }]
+  end
+  check.call(groups == expected_groups, "#{path}: original arXiv grouping/order regressed")
+end
+check.call(!root.join('AGENTS.md').exist? && !root.join('docs').exist?, 'Repository instructions published accidentally')
+
+abort errors.join("\n") unless errors.empty?
+puts "SEO checks passed: #{indexed.size} indexable pages, #{papers.size} papers, valid metadata/JSON-LD, local links, images, sitemap, and research exports."

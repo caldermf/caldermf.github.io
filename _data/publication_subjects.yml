@@ -1,0 +1,10 @@
+- id: machine-learning
+  label: Machine Learning
+- id: representation-theory
+  label: Representation Theory
+- id: combinatorics
+  label: Combinatorics
+- id: probability-statistics
+  label: Probability & Statistics
+- id: algebraic-geometry
+  label: Algebraic Geometry

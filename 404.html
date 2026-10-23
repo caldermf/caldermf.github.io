@@ -1,9 +1,10 @@
 ---
 layout: page
+title: Page not found
+description: This page could not be found.
 permalink: /404.html
-title: "Page not found"
-description: "Looks like there has been a mistake. Nothing exists here."
-redirect: true
+noindex: true
+sitemap: false
 ---
 
-<p>You will be redirected to the main page within 3 seconds. If not redirected, please go back to the <a href="{{ site.baseurl }}/">home page</a>.</p>
+You can return to the [homepage]({{ '/' | relative_url }}), browse [publications]({{ '/publications/' | relative_url }}), or explore [notes and projects]({{ '/projects/' | relative_url }}).
