@@ -5,8 +5,8 @@
 This is Calder Morton-Ferguson's personal research website. Researcher identity is also linked through ORCID, Google Scholar, GitHub, and LinkedIn on the homepage.
 
 ## Main pages
-- [Biography and selected papers](https://caldermf.github.io/): Current research interests and academic background.
-- [Publications](https://caldermf.github.io/publications/): Papers grouped by original arXiv year; journal publication dates are listed separately.
+- [Biography and papers](https://caldermf.github.io/): Current research interests, academic background, and the full publication list.
+- [Papers](https://caldermf.github.io/publications/): Papers grouped by original arXiv year; journal publication dates are listed separately.
 - [Research software and notes](https://caldermf.github.io/projects/): Projects, interactive demonstrations, talks, and notes.
 - [Teaching](https://caldermf.github.io/teaching/): Mathematics teaching experience.
 - [CV](https://caldermf.github.io/assets/pdf/cv.pdf): Academic CV in PDF format.
