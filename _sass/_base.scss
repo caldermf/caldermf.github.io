@@ -27,10 +27,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-// A faint fibre in the paper. Fixed behind the content, ignored by pointer and print.
+// A faint fibre in the paper. It covers the whole page and scrolls with it, as paper would, and
+// is ignored by pointer and print.
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
