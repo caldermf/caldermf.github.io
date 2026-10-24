@@ -12,7 +12,7 @@ $two-columns: 58em;
 .wrap {
   max-width: calc(var(--page-width) + 2 * var(--gutter));
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding-inline: var(--gutter);
 }
 
 .skip-link {
@@ -143,9 +143,9 @@ $two-columns: 58em;
 
 // Main column
 
+// As in a book, the bottom margin is the deepest on the page: about twice the space above.
 main {
-  padding-top: var(--space-5);
-  padding-bottom: var(--space-6);
+  padding-bottom: calc(2 * var(--space-6));
 
   &:focus {
     outline: none;

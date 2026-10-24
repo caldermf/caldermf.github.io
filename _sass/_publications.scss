@@ -17,13 +17,13 @@
   font-size: 0.8125rem;
 
   .subject-label {
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
   }
 
   ul {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 0.85rem;
+    column-gap: var(--space-4);
     margin: 0;
     padding: 0;
     list-style: none;
