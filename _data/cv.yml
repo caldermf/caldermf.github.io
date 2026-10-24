@@ -1,0 +1,263 @@
+# The CV shown at /cv/, transcribed from assets/pdf/cv.pdf. Keep the two in step.
+#
+# Each section has a title and entries. An entry has a head (bold), and optionally:
+#   after: set after the head, as in "Instructor, Yale University"
+#   when:  a date set after the head in grey (used for talks)
+#   lines: detail lines beneath, in Markdown
+#   items: sub-entries (title in italics, detail beneath)
+# Papers are one Markdown line each, newest first; the list numbers itself.
+
+affiliation: "Department of Mathematics, Yale University"
+email: "calder dot morton-ferguson at yale dot edu"
+pdf: /assets/pdf/cv.pdf
+
+sections:
+  - title: "Education"
+    id: education
+    entries:
+      - head: "Massachusetts Institute of Technology"
+        lines:
+          - "Ph.D., Mathematics. August 2019–May 2024. GPA: 5.0/5.0"
+          - "Advisor: Roman Bezrukavnikov"
+      - head: "University of Toronto"
+        lines:
+          - "Honours Bachelor of Science, June 2019. GPA: 4.0/4.0"
+          - "Mathematics Specialist, Computer Science Minor"
+
+  - title: "Employment"
+    id: employment
+    entries:
+      - head: "Yale University"
+        lines:
+          - "Gibbs Assistant Professor, since July 2025"
+      - head: "Stanford University"
+        lines:
+          - "Szegő Assistant Professor, 2024–2025"
+
+  - title: "Papers"
+    id: papers
+    papers:
+      - "(with P. Diaconis) [*Markov chains on Weyl groups from the geometry of the flag variety*](/publications/markovchains/), under review. [arXiv:2510.02285](https://arxiv.org/abs/2510.02285)"
+      - "(with P. Boixeda Alvarez) [*Weight modules and gluing of sheaves on the flag variety*](/publications/weightmodules/), under review. [arXiv:2509.25156](https://arxiv.org/abs/2509.25156)"
+      - "(with R. Bezrukavnikov, M. Finkelberg, and D. Kazhdan) [*Modular reduction of complex representations of finite reductive groups*](/publications/modular/). [arXiv:2502.09605](https://arxiv.org/abs/2502.09605)"
+      - "(with R. Bezrukavnikov) [*Perverse sheaves and t-structures on the thin and thick affine flag varieties*](/publications/thinthick/), under review; positive reviews received at J. Eur. Math. Soc. [arXiv:2409.16259](https://arxiv.org/abs/2409.16259)"
+      - "[*Polishchuk’s conjecture and Kazhdan-Laumon representations*](/publications/cmfrationality/), Compositio Mathematica **161** (2025) no. 5, 993–1020. [arXiv:2309.13462](https://arxiv.org/abs/2309.13462)"
+      - "[*Symplectic Fourier-Deligne transforms on G/U and the algebra of braids and ties*](/publications/cmfsymplectic/), Int. Math. Res. Not. IMRN **2024** (2024), no. 13, 10219–10235. [arXiv:2304.01998](https://arxiv.org/abs/2304.01998)"
+      - "[*Kazhdan-Laumon category O, Braverman-Kazhdan Schwartz space, and the semi-infinite flag variety*](/publications/cmfcato/), Represent. Theory **29** (2025), 1–34. [arXiv:2210.03101](https://arxiv.org/abs/2210.03101)"
+      - "(with A. Dranowski, B. Elek, J. Kamnitzer) [*Heaps, crystals, and preprojective algebra modules*](/publications/dekm/), Selecta Math (N.S.) **30** (2024), no. 5, 94. [arXiv:2202.02490](https://arxiv.org/abs/2202.02490)"
+      - "(with A. Dranowski and J. Kamnitzer) Appendix to [*The Mirković-Vilonen basis and Duistermaat-Heckman measures*](/publications/appendix/) by P. Baumann, J. Kamnitzer, and A. Knutson; Acta Math. **227** (2021) no. 1, 1–101. [arXiv:1905.08460](https://arxiv.org/abs/1905.08460)"
+
+  - title: "Research Awards"
+    id: research-awards
+    entries:
+      - head: "MIT Charles W. and Jennifer C. Johnson Prize, 2024"
+        lines:
+          - "Best graduate student paper, awarded for [*Symplectic Fourier-Deligne transforms on G/U and the algebra of braids and ties*](/publications/cmfsymplectic/)"
+      - head: "NSERC PGS-D Postgraduate Scholarship, 2021–2024"
+        lines:
+          - "Kazhdan-Laumon categories and representations"
+      - head: "NSERC Undergraduate Student Research Awards"
+        lines:
+          - "Topology of quiver flag varieties, supervised by Joel Kamnitzer, 2018"
+          - "3-manifold topology, supervised by Dror Bar-Natan, 2017"
+
+  - title: "Teaching"
+    id: teaching
+    entries:
+      - head: "Instructor"
+        after: "Yale University"
+        lines:
+          - "Math 3500 (Abstract Algebra) Spring 2026"
+          - "Math 2250 (Linear Algebra with Proofs) Fall 2025"
+      - head: "Instructor"
+        after: "Stanford University"
+        lines:
+          - "Math 245C (Topics in Algebraic Geometry) Spring 2025"
+          - "Math 51 (Linear Algebra & Multivariable Calculus) Fall 2024"
+      - head: "Course Administrator"
+        after: "Massachusetts Institute of Technology"
+        lines:
+          - "18.02B (Calculus III) Winter 2022"
+      - head: "Teaching Assistant"
+        after: "Massachusetts Institute of Technology"
+        lines:
+          - "18.726 (Graduate Algebraic Geometry II) Spring 2024"
+          - "18.745 & 18.755 (Graduate Lie Groups & Lie Algebras) 2023–2024"
+          - "18.702 (Abstract Algebra II) Spring 2023"
+          - "18.02A & 18.02B (Calculus II & III) Fall 2021, Winter 2022"
+          - "18.725 & 18.726 (Graduate Algebraic Geometry I & II) 2020–2021"
+      - head: "Teaching Assistant"
+        after: "University of Toronto"
+        lines:
+          - "MAT257 (Analysis II) 2018–2019, MAT137 (Calculus) 2017–2018"
+          - "MAT135 & MAT136 (Calculus 1A/1B) Fall 2016, Spring 2017"
+
+  - title: "Other Awards"
+    id: other-awards
+    entries:
+      - head: "MIT Charles and Holly Housman Award, 2022"
+        lines:
+          - "Presented for “skill and dedication in undergraduate teaching”"
+      - head: "MIT School of Science Spot Appreciation Award, 2022"
+        lines:
+          - "Presented for work as the course administrator for 18.02B in 2022"
+      - head: "MIT Presidential Fellowship, 2019"
+        lines:
+          - "Awarded to 110–125 new students per year “to recruit the most outstanding students worldwide” to pursue graduate studies at MIT"
+      - head: "Janet Paterson Scholarship, 2019"
+        lines:
+          - "Top graduating student of Innis College at the University of Toronto"
+      - head: "Governor General’s Silver Medal, Innis College Nominee, 2019"
+        lines:
+          - "Awarded annually to the graduating student from Innis College with the highest grade-point average"
+      - head: "Top 500, William Lowell Putnam Mathematical Competition, 2018"
+      - head: "Samuel Beatty In-Course Scholarship, 2018"
+        lines:
+          - "Awarded for academic performance in the 2017–2018 academic year"
+      - head: "Margaret and Thomas Taylor Scholarships in Mathematics, 2017"
+        lines:
+          - "Awarded to undergraduate or graduate students who demonstrate exceptional achievement in mathematics"
+      - head: "University of Toronto Scholar, 2016–2018"
+        lines:
+          - "Awarded to the top 100 undergraduates at the university each year"
+      - head: "University of Toronto President’s Scholarship, 2015"
+      - head: "Euclid Mathematics Contest Regional Winner, 2015"
+
+  - title: "Research Mentorship"
+    id: mentorship
+    entries:
+      - head: "MIT UROP Supervisor, 2021–2024"
+        items:
+          - title: "Formal degrees of representations of p-adic groups"
+            detail: "with undergraduate student Kenta Suzuki. Fall 2022–Spring 2024."
+          - title: "q-quasiinvariants and Cherednik algebras at roots of unity"
+            detail: "with undergraduate student Frank Wang. Fall 2021–Spring 2022."
+      - head: "MIT SPUR Mentor, Summer 2021"
+        items:
+          - title: "Convolution-exact perverse sheaves on the affine flag variety"
+            detail: "with undergraduate student Alan Peng"
+          - title: "Toward explicit Hilbert series of quasiinvariants in char. p"
+            detail: "with undergraduate student Frank Wang."
+      - head: "MIT PRIMES Mentor, 2020"
+        items:
+          - title: "Gaussian binomial coefficients at roots of unity"
+            detail: "with high school students Andy Chen, Peter Jiang, and Tom Wang."
+
+  - title: "Technical Research Skills"
+    id: skills
+    entries:
+      - head: "Programming and Scientific Computing"
+        lines:
+          - "Proficiency in Python, PyTorch, SageMath, Wolfram Language"
+      - head: "High-Performance Computing & Infrastructure"
+        lines:
+          - "SLURM, Bash, Git, Linux/Unix Environments, Parallel Programming & GPU Acceleration"
+
+  - title: "Seminar & Conference Talks"
+    id: talks
+    compact: true
+    entries:
+      - head: "Duke University Number Theory Seminar"
+        when: "April 8, 2026"
+      - head: "Univ. of Toronto Geom. & Physics Seminar"
+        when: "February 2, 2026"
+      - head: "Northeastern University GPRT Seminar"
+        when: "November 13, 2025"
+      - head: "MIT Lie Groups Seminar"
+        when: "November 12, 2025"
+      - head: "UC Berkeley Number Theory Seminar"
+        when: "May 5, 2025"
+      - head: "UCLA Algebra Seminar"
+        when: "March 14, 2025"
+      - head: "University of Michigan GLNT Seminar"
+        when: "October 21, 2024"
+      - head: "Stanford Representation Theory Seminar"
+        when: "September 26, 2024"
+      - head: "MIT Seminar on Affine Kac-Moody Algebras"
+        when: "May 6 & 9, 2024"
+      - head: "UCLA Algebra Seminar"
+        when: "November 3, 2023"
+      - head: "Canada-USA-Mexico Represent. Theory, Noncomm. Alg. and Categorification, University of Montreal"
+        when: "August 25, 2023"
+      - head: "UMass Amherst Representation Theory Seminar"
+        when: "May 8, 2023"
+      - head: "Yale Geometry, Symmetry and Physics Seminar"
+        when: "April 3, 2023"
+      - head: "MIT Lie Groups Seminar"
+        when: "December 7, 2022"
+      - head: "ICERM Program on Braids in Representation Theory and Algebraic Combinatorics"
+        when: "February 26, 2022"
+      - head: "MIT Pure Math Graduate Student Seminar"
+        when: "September 24, 2021"
+      - head: "IAS Quantum Groups Learning Seminar"
+        when: "March 4 & 11, 2021"
+      - head: "Canadian Undergraduate Math Conferences"
+        when: "2016–2019"
+        lines:
+          - "Queen’s University, Kingston ON, 2019"
+          - "University of Saskatchewan, Saskatoon SK, 2018"
+          - "University of Quebec at Montreal, Montreal QC, 2017"
+          - "University of Victoria, Victoria BC, 2016"
+
+  - title: "Conferences, Workshops, & Research Visits"
+    id: conferences
+    entries:
+      - head: "Research Visits to SMRI"
+        lines:
+          - "March 18–25, 2025 and March 4–14, 2026. University of Sydney."
+      - head: "Arizona Winter School, Session Leader"
+        lines:
+          - "March 8–12. University of Arizona."
+      - head: "WARTHOG 2024: Coherent-Constructible Equivalences in Local Geometric Langlands and Representation Theory"
+        lines:
+          - "July 22–26, 2024. University of Oregon."
+      - head: "Relative Langlands Duality Summer School & Workshop"
+        lines:
+          - "June 3–6, 2024. University of Minnesota."
+      - head: "MSRI Summer School in Derived Algebraic Geometry"
+        lines:
+          - "June 26–July 7, 2023. UC Berkeley."
+      - head: "Coulomb Branches and Knot Homology Summer School"
+        lines:
+          - "June 19–23, 2023. Massachusetts Institute of Technology."
+      - head: "Lie Groups Days in Honor of David Vogan"
+        lines:
+          - "September 23–24, 2022. Massachusetts Institute of Technology."
+      - head: "Quantized Symplectic Singularities & Applic. to Lie Theory"
+        lines:
+          - "June 13–17, 2022. Massachusetts Institute of Technology."
+      - head: "Los Angeles Workshop on Representations and Geometry: Schubert Calculus and Quantum Integrability"
+        lines:
+          - "June 6–10, 2022. University of Southern California."
+      - head: "Conference on Representation Theory & Algebraic Analysis"
+        lines:
+          - "May 11–14, 2020. Weizmann Institute of Science (attended virtually)."
+      - head: "Summer School on Geometric & Algebraic Combinatorics"
+        lines:
+          - "June 17–28, 2019. Institut de Mathématiques de Jussieu-Paris RG."
+      - head: "Thematic Program in Comm. Algebra & Algebraic Geometry"
+        lines:
+          - "May 28–June 1, 2019. Notre Dame University."
+      - head: "Thematic Program in Geometric Representation Theory"
+        lines:
+          - "June 11–15, 2018. Notre Dame University."
+      - head: "University of Toronto Perverse Sheaves Learning Seminar"
+        lines:
+          - "September 2018–April 2019. University of Toronto."
+
+  - title: "Service & Other Experience"
+    id: service
+    entries:
+      - head: "Seminars Co-organized"
+        lines:
+          - "Stanford Representation Theory Seminar, 2024–2025"
+          - "MIT Pure Math Graduate Student Seminar, 2020–2021"
+      - head: "Refereeing"
+        lines:
+          - "Compositio Mathematica, IMRN, Transformation Groups, Representation Theory, Annals of Representation Theory, Mathematical Research Letters."
+      - head: "Teaching Assistant, Boston Pre-Release Center"
+        lines:
+          - "Spring 2023, Boston, MA. Taught high-school equivalent math to incarcerated students at the Boston Pre-Release correctional facility."
+      - head: "University of Toronto Mathematics Union President"
+        lines:
+          - "2017–2018, University of Toronto."

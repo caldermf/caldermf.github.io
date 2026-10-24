@@ -1,0 +1,45 @@
+---
+layout: default
+---
+{%- comment -%}
+  The CV, rendered from _data/cv.yml. Section names stand in the margin column, as in the
+  printed CV, with their entries beside them in the text column.
+{%- endcomment -%}
+{%- assign cv = site.data.cv -%}
+<header class="page-header">
+  <h1>Curriculum Vitae</h1>
+  <p class="cv-contact">
+    {{ cv.affiliation | escape }}<br>
+    {{ cv.email | escape }}<span class="cv-pdf"> &middot; <a class="plain" href="{{ cv.pdf | relative_url }}">PDF version</a></span>
+  </p>
+</header>
+
+<article class="page-content cv">
+  {%- for section in cv.sections %}
+  <h2 id="{{ section.id }}">{{ section.title | escape }}</h2>
+  {%- if section.papers %}
+  <ol class="cv-list cv-papers" reversed>
+    {%- for paper in section.papers %}
+    <li>{{ paper | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <ul class="cv-list{% if section.compact %} cv-compact{% endif %}">
+    {%- for entry in section.entries %}
+    <li>
+      <p class="cv-head"><span class="cv-name">{{ entry.head | escape }}</span>
+        {%- if entry.after %}, {{ entry.after | escape }}{% endif %}
+        {%- if entry.when %} <span class="cv-when">{{ entry.when | escape }}</span>{% endif -%}
+      </p>
+      {%- for line in entry.lines %}
+      <p class="cv-line">{{ line | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      {%- endfor %}
+      {%- for item in entry.items %}
+      <p class="cv-item"><i>{{ item.title | escape }}</i><span class="cv-line">{{ item.detail | escape }}</span></p>
+      {%- endfor %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  {%- endfor %}
+</article>

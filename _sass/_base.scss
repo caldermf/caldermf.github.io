@@ -194,3 +194,41 @@ a.plain {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+@media print {
+  @page {
+    margin: 1.8cm 2cm;
+  }
+
+  html:root:root {
+    --paper: #fff;
+    --ink: #000;
+    --muted: #444;
+    --rule: #ccc;
+    --link: #000;
+    --image-filter: none;
+  }
+
+  .site-header,
+  .skip-link,
+  .cv-pdf {
+    display: none !important;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+
+  li {
+    break-inside: avoid;
+  }
+}
+

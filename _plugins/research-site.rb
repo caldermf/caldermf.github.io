@@ -235,7 +235,7 @@ module ResearchSite
         - [Papers](#{url('/publications/')}): Papers grouped by original arXiv year; journal publication dates are listed separately.
         - [Research software and notes](#{url('/projects/')}): Projects, interactive demonstrations, talks, and notes.
         - [Teaching](#{url('/teaching/')}): Mathematics teaching experience.
-        - [CV](#{url('/assets/pdf/cv.pdf')}): Academic CV in PDF format.
+        - [CV](#{url('/cv/')}): Academic CV; also available as a [PDF](#{url('/assets/pdf/cv.pdf')}).
 
         ## Structured and plain-text research data
         - [Researcher profile](#{url('/profile.json')}): Schema.org Person data with verified profile links.

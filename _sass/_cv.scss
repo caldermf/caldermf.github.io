@@ -1,0 +1,85 @@
+// The CV: section names in the margin column, entries in the text column.
+
+.cv-contact {
+  margin-top: var(--space-2);
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.cv-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li + li {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.cv-name {
+  font-weight: 600;
+}
+
+.cv-when {
+  color: var(--muted);
+}
+
+.cv-line {
+  display: block;
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.cv-item {
+  margin-top: var(--space-2) !important;
+
+  i {
+    display: block;
+  }
+}
+
+// Talks: one line each, so they read as a list rather than a column of headings.
+.cv-compact {
+  gap: var(--space-2);
+
+  .cv-name {
+    font-weight: 400;
+  }
+}
+
+// Papers number themselves, newest first, as in the printed CV.
+.cv-papers {
+  list-style: decimal;
+  padding-left: 1.75em;
+
+  li::marker {
+    color: var(--muted);
+  }
+}
+
+// Links to the site's own pages read as text; outside links (arXiv) keep the link colour.
+.cv a {
+  text-decoration-line: none;
+
+  &:hover {
+    text-decoration-line: underline;
+  }
+}
+
+.cv a[href^="/"] {
+  color: inherit;
+}
+
+// On wide screens the paper numbers hang in the gutter, outside the text column.
+@media (min-width: 58em) {
+  .cv-papers {
+    padding-left: 0;
+  }
+}

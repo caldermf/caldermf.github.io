@@ -1,13 +1,8 @@
 ---
-layout: default
+layout: cv
 permalink: /cv/
-title: cv
-nav: false
-nav_order: 4
-redirect_to: /assets/pdf/cv.pdf
-canonical_url: /assets/pdf/cv.pdf
-noindex: true
-sitemap: false
-description: my academic CV
+title: CV
+nav: true
+nav_order: 6
+seo_description: "My academic CV, also available as a PDF."
 ---
-<p><a href="{{ '/assets/pdf/cv.pdf' | relative_url }}">Download Calder Morton-Ferguson's CV (PDF)</a>.</p>

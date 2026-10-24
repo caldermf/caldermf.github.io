@@ -8,6 +8,7 @@ The site remains static HTML. Titles, abstracts, links, and researcher identity 
 - `_config.yml`: short search description, personal profile identifiers, and social preview image.
 - `_bibliography/papers.bib`: paper titles, full author lists, abstracts, journal publication metadata, arXiv IDs, and `arxiv_date` (the verified first submission date shown by arXiv).
 - `_projects/*.md`: real project/notes landing pages with links to source code, demonstrations, and documents.
+- `_data/cv.yml`: the CV shown at `/cv/`, transcribed from `assets/pdf/cv.pdf`. Update both together.
 
 For new papers, copy the first arXiv submission date, not the latest revision date. Keep the journal's publication year in `year`. The lists derive their grouping from the original arXiv ID; the paper pages distinguish first posting from journal publication. An appendix is represented separately from its parent paper to avoid assigning the appendix's author list to the entire paper.
 
