@@ -66,7 +66,12 @@ defaults:
     path: burnside-sampler
   values:
     sitemap: false
+# Sass compresses the stylesheet itself. The minifier's CSS compressor mangles calc() and custom
+# properties (var(--page-width) becomes var( -  - page - width)), which breaks the layout.
+sass:
+  style: compressed
 jekyll-minifier:
+  compress_css: false
   exclude:
   - robots.txt
   - llms.txt

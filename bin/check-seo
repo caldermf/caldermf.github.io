@@ -148,6 +148,8 @@ expected_groups = papers.group_by { |p| p['arxiv_date'][0, 4] }.transform_values
   check.call(groups == expected_groups, "#{path}: original arXiv grouping/order regressed")
 end
 check.call(!root.join('AGENTS.md').exist? && !root.join('docs').exist?, 'Repository instructions published accidentally')
+css = root.join('assets/css/main.css').read
+check.call(!css.match?(/var\(\s+-/) && !css.match?(/[\w)][+-]var\(/), 'Stylesheet calc()/var() expressions were mangled by minification')
 
 abort errors.join("\n") unless errors.empty?
 puts "SEO checks passed: #{indexed.size} indexable pages, #{papers.size} papers, valid metadata/JSON-LD, local links, images, sitemap, and research exports."
