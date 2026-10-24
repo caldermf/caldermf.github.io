@@ -10,5 +10,3 @@ nav_order: 1
 publication_list: true
 ---
 {% include publication_list.html %}
-
-<p><a href="{{ '/publications.bib' | relative_url }}" download>Download the bibliography (BibTeX)</a></p>
