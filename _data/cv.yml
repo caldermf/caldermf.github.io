@@ -37,6 +37,8 @@ sections:
   - title: "Papers"
     id: papers
     papers:
+      - "(with N. Dao, N. Golowich, and A. Block) [*ReAPO: Retry-Aware Policy Optimization for Efficient Exploration in LLM Reasoning*](/publications/reapo/). [arXiv:2610.28770](https://arxiv.org/abs/2610.28770)"
+      - "(with D. Davis and I. Losev) [*A bar operation on the double affine Hecke algebra*](/publications/baroperation/). [arXiv:2609.23866](https://arxiv.org/abs/2609.23866)"
       - "(with P. Diaconis) [*Markov chains on Weyl groups from the geometry of the flag variety*](/publications/markovchains/), under review. [arXiv:2510.02285](https://arxiv.org/abs/2510.02285)"
       - "(with P. Boixeda Alvarez) [*Weight modules and gluing of sheaves on the flag variety*](/publications/weightmodules/), under review. [arXiv:2509.25156](https://arxiv.org/abs/2509.25156)"
       - "(with R. Bezrukavnikov, M. Finkelberg, and D. Kazhdan) [*Modular reduction of complex representations of finite reductive groups*](/publications/modular/). [arXiv:2502.09605](https://arxiv.org/abs/2502.09605)"
@@ -207,7 +209,7 @@ sections:
           - "March 18–25, 2025 and March 4–14, 2026. University of Sydney."
       - head: "Arizona Winter School, Session Leader"
         lines:
-          - "March 8–12. University of Arizona."
+          - "March 8–12, 2025. University of Arizona."
       - head: "WARTHOG 2024: Coherent-Constructible Equivalences in Local Geometric Langlands and Representation Theory"
         lines:
           - "July 22–26, 2024. University of Oregon."
