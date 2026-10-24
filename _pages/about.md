@@ -2,6 +2,7 @@
 layout: about
 title: home
 permalink: /
+seo_description: "I am a mathematician and research scientist currently working on machine learning, with a focus on reasoning in language models and applications to mathematical, scientific, and medical research."
 profile:
   image: profile.jpg
   address: >

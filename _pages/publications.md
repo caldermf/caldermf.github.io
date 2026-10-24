@@ -3,8 +3,7 @@ layout: page
 permalink: /publications/
 title: Papers
 description:
-seo_title: "Research Publications | Calder Morton-Ferguson"
-seo_description: "Research papers by Calder Morton-Ferguson on language-model reasoning, geometric representation theory, algebra, and combinatorics, with abstracts and links."
+seo_description: "My papers, newest first, with abstracts and links to arXiv."
 nav: true
 nav_order: 1
 publication_list: true

@@ -3,8 +3,7 @@ layout: page
 title: Projects & Notes
 permalink: /projects/
 description:
-seo_title: "Research Software, Projects & Notes | Calder Morton-Ferguson"
-seo_description: "Explore Calder Morton-Ferguson's research software, interactive Burnside sampler, mathematical visualizations, talks, and notes."
+seo_description: "Research code, an interactive Burnside sampler, and notes from talks."
 nav: true
 nav_order: 2
 display_categories:

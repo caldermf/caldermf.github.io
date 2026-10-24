@@ -32,6 +32,27 @@ module ResearchSite
     LaTeX.decode(value.to_s).gsub(/\s+/, ' ').strip
   end
 
+  SUBSCRIPTS = '0123456789aehijklmnoprstuvx'.chars.zip('₀₁₂₃₄₅₆₇₈₉ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ'.chars).to_h
+  SUPERSCRIPTS = '0123456789abcdefghijklmnoprstuvwxyz'.chars.zip('⁰¹²³⁴⁵⁶⁷⁸⁹ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ'.chars).to_h
+  BLACKBOARD = { 'C' => 'ℂ', 'F' => '𝔽', 'N' => 'ℕ', 'Q' => 'ℚ', 'R' => 'ℝ', 'Z' => 'ℤ' }.freeze
+  CALLIGRAPHIC = { 'H' => 'ℋ', 'L' => 'ℒ', 'O' => '𝒪' }.freeze
+  GREEK = %w[alpha beta gamma delta epsilon lambda mu pi sigma tau phi chi psi omega Gamma Delta Lambda Sigma Phi Omega]
+    .zip(%w[α β γ δ ε λ μ π σ τ φ χ ψ ω Γ Δ Λ Σ Φ Ω]).to_h
+
+  # Link previews are plain text and never typeset, so render inline TeX as readable Unicode there.
+  def self.plain_math(value)
+    value.to_s.gsub(/(?<!\\)\$(.*?)(?<!\\)\$/) do
+      tex = Regexp.last_match(1)
+      tex = tex.gsub(/\\mathbb\{(\w)\}/) { BLACKBOARD.fetch(Regexp.last_match(1), Regexp.last_match(1)) }
+      tex = tex.gsub(/\\mathcal\{(\w)\}/) { CALLIGRAPHIC.fetch(Regexp.last_match(1), Regexp.last_match(1)) }
+      tex = tex.gsub(/\\(?:mathrm|mathbf|mathit|text|operatorname)\{([^}]*)\}/, '\\1')
+      tex = tex.gsub(/\\([A-Za-z]+)/) { GREEK.fetch(Regexp.last_match(1), Regexp.last_match(1)) }
+      tex = tex.gsub(/_\{?([^{}\s])\}?/) { SUBSCRIPTS[Regexp.last_match(1)] || "_#{Regexp.last_match(1)}" }
+      tex = tex.gsub(/\^\{?([^{}\s])\}?/) { SUPERSCRIPTS[Regexp.last_match(1)] || "^#{Regexp.last_match(1)}" }
+      tex.delete('{}')
+    end
+  end
+
   def self.absolute(site, path)
     return path if path.to_s.match?(%r{\Ahttps?://})
     "#{site.config['url'].sub(%r{/$}, '')}#{site.config['baseurl']}/#{path.to_s.sub(%r{\A/}, '')}"
@@ -167,7 +188,7 @@ module ResearchSite
     end
 
     def publication_page(p)
-      description = p['abstract'].empty? ? "#{p['title']} by #{p['authors'].join(', ')}. Publication details and links to the full paper." : p['abstract'].gsub(/\s+/, ' ')[0, 155].sub(/\s+\S*\z/, '') + '…'
+      description = p['abstract'].empty? ? "#{p['title']} by #{p['authors'].length > 2 ? "#{p['authors'][0..-2].join(', ')}, and #{p['authors'][-1]}" : p['authors'].join(' and ')}." : ResearchSite.plain_math(p['abstract']).gsub(/\s+/, ' ')[0, 155].sub(/\s+\S*\z/, '').sub(/[\s.,;:]+\z/, '') + '…'
       add_page("#{p['url'].delete_prefix('/')}index.html", '', {
         'layout' => 'publication', 'title' => p['title'], 'paper' => p,
         'seo_description' => description, 'social_image' => p['preview'],
