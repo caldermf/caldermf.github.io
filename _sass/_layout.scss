@@ -74,8 +74,6 @@ $two-columns: 58em;
 
   a {
     color: var(--muted);
-    font-variant-caps: small-caps;
-    letter-spacing: 0.04em;
     text-decoration: none;
 
     &:hover {
@@ -116,12 +114,6 @@ $two-columns: 58em;
 
     ul {
       column-gap: 0.75rem;
-    }
-
-    // Small caps run wider than lowercase; on a phone they would push the navigation to two lines.
-    a {
-      font-variant-caps: normal;
-      letter-spacing: 0;
     }
   }
 }

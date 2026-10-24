@@ -4,21 +4,11 @@
   margin-bottom: var(--space-3);
 }
 
-// Subject labels are set in capitals and small caps, letterspaced slightly as small caps need.
-.subject-label {
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
-}
-
 // Subject filters: a row of tabs resting on a hairline, the current one underscored.
 .publication-filters {
   margin-bottom: var(--space-5);
   border-bottom: 1px solid var(--rule);
-  font-size: 0.8125rem;
-
-  .subject-label {
-    letter-spacing: 0.04em;
-  }
+  font-size: var(--text-small);
 
   ul {
     display: flex;

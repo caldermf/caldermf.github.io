@@ -19,15 +19,15 @@
 }
 
 :root {
-  // Natural book stock, printing ink, pencil, and blue-black fountain-pen ink for links.
-  --paper: #f4eee2;
-  --ink: #2b2620;
-  --muted: #6e6458;
-  --rule: #ddd3c2;
-  --link: #284670;
-  --link-underline: rgba(40, 70, 112, 0.34);
-  --selection: rgba(40, 70, 112, 0.14);
-  --grain-opacity: 0.05;
+  // A neutral off-white (to white what the dark ground is to black) and black text. Links take
+  // the hue of the shirt in the portrait, made more saturated so they read as links.
+  --paper: #f7f7f5;
+  --ink: #000;
+  --muted: #6b6b6b;
+  --rule: #e2e2df;
+  --link: #186774;
+  --link-underline: rgba(24, 103, 116, 0.34);
+  --selection: rgba(24, 103, 116, 0.14);
   --image-filter: none;
 
   --serif: "CMF Serif", "Source Serif 4", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -71,16 +71,17 @@
 }
 
 @mixin dark-tokens {
-  // The same page by lamplight.
-  --paper: #1d1a16;
-  --ink: #e8dfcf;
-  --muted: #a6998a;
-  --rule: #3a342b;
-  --link: #a9bfdc;
-  --link-underline: rgba(169, 191, 220, 0.34);
-  --selection: rgba(169, 191, 220, 0.2);
-  --grain-opacity: 0.035;
-  --image-filter: brightness(0.9) sepia(0.06);
+  // The original theme's dark ground.
+  --paper: #1c1c1d;
+  --ink: #e8e8e8;
+  --muted: #9a9a9a;
+  --rule: #424246;
+  // The same shirt teal, lifted to read on the dark ground.
+  --link: #78afba;
+  --link-underline: rgba(120, 175, 186, 0.38);
+  --selection: rgba(120, 175, 186, 0.22);
+  // White-ground figures would glare in the dark; dim them slightly.
+  --image-filter: brightness(0.9);
 
   color-scheme: dark;
 }

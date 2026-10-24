@@ -1,8 +1,8 @@
 <div class="publication-filters" hidden>
   <ul role="group" aria-label="Filter papers by subject">
-    <li><button type="button" class="subject-label" data-subject="all" aria-pressed="true">All</button></li>
+    <li><button type="button" data-subject="all" aria-pressed="true">All</button></li>
     {%- for subject in site.data.publication_subjects %}
-    <li><button type="button" class="subject-label" data-subject="{{ subject.id }}" aria-pressed="false">{{ subject.label | escape }}</button></li>
+    <li><button type="button" data-subject="{{ subject.id }}" aria-pressed="false">{{ subject.label | escape }}</button></li>
     {%- endfor %}
   </ul>
 </div>

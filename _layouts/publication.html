@@ -27,7 +27,7 @@ layout: default
         {% endif %}
         {% if page.paper.subjects.size > 0 %}
         <ul class="publication-tags dot-list" aria-label="Subjects">
-          {%- for subject in page.paper.subjects %}<li class="subject-label">{{ subject.label | escape }}</li>{% endfor -%}
+          {%- for subject in page.paper.subjects %}<li>{{ subject.label | escape }}</li>{% endfor -%}
         </ul>
         {% endif %}
       </header>
