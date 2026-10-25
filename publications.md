@@ -70,6 +70,8 @@ Subjects: Representation Theory, Algebraic Geometry
 
 First posted on arXiv: 2024-09-24
 
+To appear in Journal of the European Mathematical Society
+
 We study the categories of Iwahori-equivariant perverse sheaves on the thin and thick affine flag varieties associated to a split reductive group $G$. An earlier work of the first author describes perverse sheaves on the thin flag variety in terms of bimodules over the so-called non-commutative Springer resolution. We partly extend this result to the thick flag variety, providing a similar description for its anti-spherical quotient. The long intertwining functor realizes sheaves on the thick flag variety as the Ringel dual of the category of sheaves on the thick flag variety, we point out that it shares some exactness properties with the similar functor acting on perverse sheaves on the finite-dimensional flag variety. We use this result to resolve a conjecture of Arkhipov and the first author, proving that the image in the Iwahori-Whittaker category of any convolution-exact perverse sheaf on the affine flag variety is tilting.
 
 [Details](https://caldermf.github.io/publications/thinthick/) · [arXiv](https://arxiv.org/abs/2409.16259) · [PDF](https://arxiv.org/pdf/2409.16259)
