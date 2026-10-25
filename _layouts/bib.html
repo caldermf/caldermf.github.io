@@ -32,12 +32,14 @@
   </p>
   <p class="paper-venue">
     {%- if entry.type == "article" -%}
-      <i>{{ entry.journal }}</i>,
+      <i>{{ entry.journal }}</i>, {{ month_name }} {{ entry.year }}
     {%- elsif entry.type == "inproceedings" or entry.type == "incollection" -%}
-      In <i>{{ entry.booktitle }}</i>,
+      In <i>{{ entry.booktitle }}</i>, {{ month_name }} {{ entry.year }}
+    {%- elsif entry.toappear -%}
+      To appear in <i>{{ entry.toappear }}</i>
     {%- else -%}
-      Preprint,
-    {%- endif %} {{ month_name }} {{ entry.year }}
+      {{ month_name }} {{ entry.year }}
+    {%- endif -%}
     {%- if entry.note %}. {{ entry.note }}{% endif -%}
   </p>
   <ul class="paper-links dot-list">
@@ -49,6 +51,8 @@
     {%- endif %}
     {%- if entry.pdf %}
     <li><a class="plain" href="{% if entry.pdf contains '://' %}{{ entry.pdf }}{% else %}{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}{% endif %}">PDF</a></li>
+    {%- elsif entry.arxiv %}
+    <li><a class="plain" href="https://arxiv.org/pdf/{{ entry.arxiv }}">PDF</a></li>
     {%- endif %}
     {%- if entry.html %}
     <li><a class="plain" href="{{ entry.html }}">Journal</a></li>

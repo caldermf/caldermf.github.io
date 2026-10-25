@@ -21,6 +21,7 @@ layout: default
             <span class="author">{{ author | escape }}</span>
           {%- endfor -%}
         </p>
+        {% if page.paper.to_appear %}<p class="publication-meta">To appear in <i>{{ page.paper.to_appear | escape }}</i>.</p>{% endif %}
         {% if page.paper.journal %}<p class="publication-meta"><i>{{ page.paper.journal | escape }}</i>{{ page.paper.publication_details | remove_first: page.paper.journal | escape | replace: "–", "–&#8288;" }}.</p>{% endif %}
         {% if page.paper.arxiv_date != empty %}
         <p class="publication-meta">{% if page.paper.is_appendix %}Parent paper first posted{% else %}First posted{% endif %} on arXiv on <time datetime="{{ page.paper.arxiv_date }}">{{ page.paper.arxiv_date | date: '%B %-d, %Y' }}</time>.</p>

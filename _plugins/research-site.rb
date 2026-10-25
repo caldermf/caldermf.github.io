@@ -140,6 +140,7 @@ module ResearchSite
         'preview' => entry[:preview] && "/assets/img/publication_preview/#{entry[:preview]}",
         'preview_alt' => entry[:preview_alt]&.to_s || "Figure from #{title}",
         'journal' => entry[:journal] && ResearchSite.text(entry[:journal]),
+        'to_appear' => entry[:toappear] && ResearchSite.text(entry[:toappear]),
         'doi' => entry[:doi]&.to_s, 'volume' => entry[:volume]&.to_s,
         'issue' => entry[:number]&.to_s, 'pages' => entry[:pages]&.to_s,
         'publisher_url' => entry[:html]&.to_s, 'code_url' => entry[:github]&.to_s
@@ -212,6 +213,7 @@ module ResearchSite
         markdown << "Subjects: #{p['subjects'].map { |subject| subject['label'] }.join(', ')}\n\n"
         markdown << "#{p['is_appendix'] ? 'Parent paper first posted' : 'First posted'} on arXiv: #{p['arxiv_date']}\n\n"
         markdown << "Journal publication: #{p['publication_details']}\n\n" if p['journal']
+        markdown << "To appear in #{p['to_appear']}\n\n" if p['to_appear']
         markdown << "#{p['abstract']}\n\n" unless p['abstract'].empty?
         markdown << "[Details](#{url(p['url'])}) · [arXiv](#{p['arxiv_url']}) · [PDF](#{p['pdf_url']})\n\n"
       end
@@ -220,6 +222,7 @@ module ResearchSite
       bibtext = bib.entries.values.map do |entry|
         fields = entry.fields.select { |key, _| allowed.include?(key) }
         fields[:eprint] = entry[:arxiv] unless ResearchSite.text(entry[:title]).start_with?('Appendix to')
+        fields[:note] = "To appear in #{ResearchSite.text(entry[:toappear])}" if entry[:toappear]
         "@#{entry.type}{#{entry.key},\n" + fields.map { |key, value| "  #{key} = {#{value}}" }.join(",\n") + "\n}\n"
       end.join("\n")
       export('publications.bib', bibtext)
